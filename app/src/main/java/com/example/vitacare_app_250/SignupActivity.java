@@ -4,30 +4,36 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SignupActivity extends AppCompatActivity {
 
-    private EditText signupPhone;
-    private EditText signupPass;
-    private Button signupSubmit;
+    private EditText phoneInput, passwordInput, confirmPasswordInput;
+    private Button signupButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        signupPhone = findViewById(R.id.signup_phone);
-        signupPass = findViewById(R.id.signup_password);
-        signupSubmit = findViewById(R.id.signup_submit);
+        phoneInput = findViewById(R.id.signup_phone);
+        passwordInput = findViewById(R.id.pass);
+        confirmPasswordInput = findViewById(R.id.conpass);
+        signupButton = findViewById(R.id.signup_submit_button);
 
-        signupSubmit.setOnClickListener(v -> {
-            String phone = signupPhone.getText().toString();
-            String pass = signupPass.getText().toString();
+        signupButton.setOnClickListener(v -> {
+            String phone = phoneInput.getText().toString();
+            String password = passwordInput.getText().toString();
+            String confirmPassword = confirmPasswordInput.getText().toString();
 
-            Toast.makeText(SignupActivity.this, "Account created (not stored): " + phone, Toast.LENGTH_SHORT).show();
-            finish(); // Go back to login
+            if (phone.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+            } else if (!password.equals(confirmPassword)) {
+                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Account created (not stored yet)", Toast.LENGTH_SHORT).show();
+                finish(); // closes sign up and returns to login
+            }
         });
     }
 }
