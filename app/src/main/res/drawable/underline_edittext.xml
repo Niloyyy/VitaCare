@@ -1,0 +1,17 @@
+<!-- File: res/drawable/underline_edittext.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@android:color/transparent" />
+    <size android:height="1dp" />
+    <stroke
+        android:width="0dp"
+        android:color="@android:color/transparent" />
+    <padding android:bottom="8dp" />
+    <layer-list>
+        <item>
+            <shape android:shape="rectangle">
+                <size android:height="10dp" />
+                <solid android:color="#1D42B1" /> <!-- underline color -->
+            </shape>
+        </item>
+    </layer-list>
+</shape>

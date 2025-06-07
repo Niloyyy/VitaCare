@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/buttonDoctorInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Doctor Information" />
+
+    <Button
+        android:id="@+id/buttonSearchDoctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search Doctor"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/buttonSearchHospital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search Hospital"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>
