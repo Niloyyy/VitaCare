@@ -2,6 +2,7 @@ package com.example.vitacare_app_250;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,8 +16,9 @@ public class DashboardActivity extends AppCompatActivity {
             startActivity(new Intent(this, DoctorInfoActivity.class));
         });
 
+        // Use this line to go directly to DoctorCategoryActivity
         findViewById(R.id.buttonSearchDoctor).setOnClickListener(v -> {
-            startActivity(new Intent(this, SearchDoctorActivity.class));
+            startActivity(new Intent(this, DoctorCategoryActivity.class));
         });
 
         findViewById(R.id.buttonSearchHospital).setOnClickListener(v -> {

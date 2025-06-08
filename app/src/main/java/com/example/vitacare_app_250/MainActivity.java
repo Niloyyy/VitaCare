@@ -44,8 +44,12 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(MainActivity.this, "Invalid phone or password", Toast.LENGTH_SHORT).show();
                 }
+
+
             }
         });
+
+
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
