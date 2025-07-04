@@ -1,44 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#E3F2FD">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Doctor Specialty"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="24dp" />
-
-    <Button
-        android:id="@+id/buttonHeart"
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Heart Specialist" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/buttonOrtho"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Orthopedics"
-        android:layout_marginTop="12dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Doctor Specialty"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#0D47A1"
+            android:layout_marginBottom="32dp" />
 
-    <Button
-        android:id="@+id/buttonMedicine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Medicine"
-        android:layout_marginTop="12dp" />
+        <!-- Container for Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_bg_specialties"
+            android:padding="24dp"
+            android:elevation="6dp">
 
-    <Button
-        android:id="@+id/buttonKidney"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Kidney Specialist"
-        android:layout_marginTop="12dp" />
-</LinearLayout>
+            <Button
+                android:id="@+id/buttonHeart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="❤️ Heart Specialist"
+                android:backgroundTint="#EF5350"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="16dp" />
+
+            <Button
+                android:id="@+id/buttonOrtho"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🦴 Orthopedics"
+                android:backgroundTint="#66BB6A"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="16dp" />
+
+            <Button
+                android:id="@+id/buttonMedicine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="💊 Medicine"
+                android:backgroundTint="#42A5F5"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="16dp" />
+
+            <Button
+                android:id="@+id/buttonKidney"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🩺 Kidney Specialist"
+                android:backgroundTint="#AB47BC"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

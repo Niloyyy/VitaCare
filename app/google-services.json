@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "582075155534",
+    "project_id": "vitacare-ca4bc",
+    "storage_bucket": "vitacare-ca4bc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582075155534:android:27d1f5522a5af913d0af1f",
+        "android_client_info": {
+          "package_name": "com.example.vitacare_app_250"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJwqEbvTVkGe2vAMZ1q-kRgPShiMsGaoQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

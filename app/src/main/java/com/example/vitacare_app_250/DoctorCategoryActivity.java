@@ -22,7 +22,5 @@ public class DoctorCategoryActivity extends AppCompatActivity {
             Intent intent = new Intent(this, HeartSpecialistActivity.class);
             startActivity(intent);
         });
-
-
     }
 }
