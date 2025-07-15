@@ -1,38 +1,71 @@
 package com.example.vitacare_app_250;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SignupActivity extends AppCompatActivity {
 
-    private EditText phoneInput, passwordInput, confirmPasswordInput;
+    private FirebaseAuth auth;
+    private EditText signupEmail ,  signupPassword , signupCon;
     private Button signupButton;
+    private TextView loginRedirectText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        phoneInput = findViewById(R.id.signup_phone);
-        passwordInput = findViewById(R.id.pass);
-        confirmPasswordInput = findViewById(R.id.conpass);
+        auth = FirebaseAuth.getInstance();
+        signupEmail = findViewById(R.id.signup_phone);
+        signupPassword = findViewById(R.id.pass);
+        signupCon = findViewById(R.id.conpass);
         signupButton = findViewById(R.id.signup_submit_button);
 
-        signupButton.setOnClickListener(v -> {
-            String phone = phoneInput.getText().toString();
-            String password = passwordInput.getText().toString();
-            String confirmPassword = confirmPasswordInput.getText().toString();
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String user = signupEmail.getText().toString().trim();
+                String pass = signupPassword.getText().toString().trim();
 
-            if (phone.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-            } else if (!password.equals(confirmPassword)) {
-                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Account created (not stored yet)", Toast.LENGTH_SHORT).show();
-                finish(); // closes sign up and returns to login
+                if(user.isEmpty()){
+                    signupEmail.setError("Email can't be empty!");
+                }
+                if(pass.isEmpty()){
+                    signupPassword.setError("Password can't be blank");
+                }
+                else{
+                    auth.createUserWithEmailAndPassword(user , pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(SignupActivity.this , "Signup successful" , Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(SignupActivity.this , MainActivity.class));
+                            }
+                            else{
+                                Toast.makeText(SignupActivity.this , "Signup failed" + task.getException().getMessage() , Toast.LENGTH_SHORT);
+                            }
+                        }
+                    });
+                }
+            }
+        });
+        loginRedirectText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignupActivity.this , MainActivity.class));
             }
         });
     }
