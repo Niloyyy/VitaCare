@@ -8,11 +8,57 @@
     android:padding="24dp"
     android:gravity="center">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="blood donor er list add koro"
-            android:textColor="@color/black"
-            android:textSize="50sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="426dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+                <EditText
+                    android:id="@+id/Name"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="@drawable/rounded_input"
+                    android:hint="Name"
+                    android:inputType="textPersonName"
+                    android:paddingHorizontal="16dp"
+                    android:textColorHint="#1D42B1" />
+
+                <EditText
+                    android:id="@+id/Phone"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="@drawable/rounded_input"
+                    android:hint="Contact Number"
+                    android:inputType="phone"
+                    android:paddingHorizontal="16dp"
+                    android:textColorHint="#1D42B1" />
+
+                <EditText
+                    android:id="@+id/Blood_grp"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="24"
+                    android:background="@drawable/rounded_input"
+                    android:hint="Blood Group"
+                    android:inputType="text"
+                    android:paddingHorizontal="16dp"
+                    android:textColorHint="#1D42B1" />
+
+                <EditText
+                    android:id="@+id/lastdonate"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="@drawable/rounded_input"
+                    android:hint="Last Donated on :"
+                    android:inputType="text"
+                    android:paddingHorizontal="16dp"
+                    android:textColorHint="#1D42B1" />
+
+        </LinearLayout>
 
 </LinearLayout>
