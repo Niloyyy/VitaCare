@@ -2,7 +2,6 @@ package com.example.vitacare_app_250;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,7 +25,7 @@ public class DashboardActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.buttonblooddonor).setOnClickListener(v -> {
-            startActivity(new Intent(this, BloodDonor.class));
+            startActivity(new Intent(this, BloodDonorActivity.class));
         });
     }
 }
