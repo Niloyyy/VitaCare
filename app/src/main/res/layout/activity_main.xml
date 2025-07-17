@@ -15,7 +15,7 @@
         app:cardCornerRadius="20dp"
         app:cardElevation="8dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/phone"
+        app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="16dp">
@@ -28,13 +28,13 @@
             app:srcCompat="@drawable/logo" />
     </androidx.cardview.widget.CardView>
 
-    <!-- Phone input -->
+    <!-- ✅ Email input (was phone input) -->
     <EditText
-        android:id="@+id/phone"
+        android:id="@+id/email"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:hint="Phone"
-        android:inputType="phone"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
         android:background="@drawable/rounded_input"
         android:paddingHorizontal="16dp"
         android:textColorHint="#1D42B1"
@@ -53,7 +53,7 @@
         android:background="@drawable/rounded_input"
         android:paddingHorizontal="16dp"
         android:textColorHint="#1D42B1"
-        app:layout_constraintTop_toBottomOf="@id/phone"
+        app:layout_constraintTop_toBottomOf="@id/email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>

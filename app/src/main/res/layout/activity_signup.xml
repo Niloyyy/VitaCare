@@ -2,26 +2,27 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E0F7FA"
     android:padding="24dp">
 
+    <!-- ✅ Email Input Field -->
     <EditText
-        android:id="@+id/signup_phone"
+        android:id="@+id/signup_email"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_input"
-        android:hint="Enter Phone Number"
-        android:inputType="phone"
+        android:hint="Enter Email Address"
+        android:inputType="textEmailAddress"
         android:paddingHorizontal="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.04" />
 
+    <!-- ✅ Password Field -->
     <EditText
         android:id="@+id/pass"
         android:layout_width="0dp"
@@ -30,15 +31,11 @@
         android:hint="Enter Password"
         android:inputType="textPassword"
         android:paddingHorizontal="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/conpass"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_email"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signup_phone" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Confirm Password -->
-
-    <!-- Sign Up Button -->
-
+    <!-- ✅ Confirm Password Field -->
     <EditText
         android:id="@+id/conpass"
         android:layout_width="0dp"
@@ -47,13 +44,12 @@
         android:hint="Confirm Password"
         android:inputType="textPassword"
         android:paddingHorizontal="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@id/pass"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.296" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
 
+    <!-- ✅ Sign Up Button -->
     <Button
         android:id="@+id/signup_submit_button"
         android:layout_width="0dp"
@@ -62,11 +58,21 @@
         android:text="Sign Up"
         android:textColor="#24CAB0"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/conpass"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.436" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.15" />
+
+    <!-- ✅ Login Redirect Text -->
+    <TextView
+        android:id="@+id/loginRedirectText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already have an account? Login"
+        android:textColor="#1D42B1"
+        app:layout_constraintTop_toBottomOf="@id/signup_submit_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
