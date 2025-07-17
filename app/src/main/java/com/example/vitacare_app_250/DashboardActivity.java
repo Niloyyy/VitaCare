@@ -24,5 +24,9 @@ public class DashboardActivity extends AppCompatActivity {
         findViewById(R.id.buttonSearchHospital).setOnClickListener(v -> {
             startActivity(new Intent(this, SearchHospitalActivity.class));
         });
+
+        findViewById(R.id.buttonblooddonor).setOnClickListener(v -> {
+            startActivity(new Intent(this, BloodDonor.class));
+        });
     }
 }

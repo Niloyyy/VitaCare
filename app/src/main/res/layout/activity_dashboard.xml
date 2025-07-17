@@ -8,7 +8,6 @@
     android:padding="24dp"
     android:gravity="center_horizontal">
 
-    <!-- App Logo with elevation and rounded background -->
     <androidx.cardview.widget.CardView
         android:layout_width="220dp"
         android:layout_height="220dp"
@@ -26,39 +25,49 @@
             app:srcCompat="@drawable/logo" />
     </androidx.cardview.widget.CardView>
 
-    <!-- Buttons inside a rounded container for aesthetic -->
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="303dp"
         android:background="@drawable/rounded_bg"
-        android:padding="24dp"
-        android:elevation="4dp">
+        android:elevation="4dp"
+        android:orientation="vertical"
+        android:padding="24dp">
 
         <Button
             android:id="@+id/buttonDoctorInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#0afdcd"
             android:text="Doctor Information"
-            android:backgroundTint="#26C6DA"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="16dp" />
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/buttonSearchDoctor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#07c29d"
             android:text="Search Doctor"
-            android:backgroundTint="#26A69A"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="16dp" />
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/buttonSearchHospital"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#05977a"
+            android:layout_marginBottom="16dp"
             android:text="Search Hospital"
-            android:backgroundTint="#0097A7"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/buttonblooddonor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#036c57"
+            android:text="Blood Donor"
             android:textColor="@android:color/white" />
     </LinearLayout>
 </LinearLayout>

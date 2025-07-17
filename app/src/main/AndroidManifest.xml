@@ -19,6 +19,7 @@
         <activity android:name=".SearchDoctorActivity" />
         <activity android:name=".SearchHospitalActivity" />
         <activity android:name=".SignupActivity" />
+        <activity android:name=".BloodDonor" />
 
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
