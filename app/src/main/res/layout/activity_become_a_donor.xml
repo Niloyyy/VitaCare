@@ -38,7 +38,7 @@
                     android:textColorHint="#1D42B1" />
 
                 <EditText
-                    android:id="@+id/Blood_grp"
+                    android:id="@+id/BloodGrp"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
                     android:layout_marginBottom="24dp"
@@ -48,16 +48,28 @@
                     android:paddingHorizontal="16dp"
                     android:textColorHint="#1D42B1" />
 
-                <EditText
-                    android:id="@+id/lastdonate"
+<!--                <EditText-->
+<!--                    android:id="@+id/lastDonate"-->
+<!--                    android:layout_width="300dp"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:layout_marginBottom="24dp"-->
+<!--                    android:background="@drawable/rounded_input"-->
+<!--                    android:hint="Last Donated on :"-->
+<!--                    android:inputType="text"-->
+<!--                    android:paddingHorizontal="16dp"-->
+<!--                    android:textColorHint="#1D42B1" />-->
+
+                <Button
+                    android:id="@+id/submitBtn"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
+                    android:text="SUBMIT"
+                    android:textStyle="bold"
                     android:layout_marginBottom="24dp"
-                    android:background="@drawable/rounded_input"
-                    android:hint="Last Donated on :"
-                    android:inputType="text"
-                    android:paddingHorizontal="16dp"
-                    android:textColorHint="#1D42B1" />
+                    android:backgroundTint="#1D42B1"
+                    android:textColor="#FFFFFF"
+                    android:padding="12dp" />
+
 
         </LinearLayout>
 
