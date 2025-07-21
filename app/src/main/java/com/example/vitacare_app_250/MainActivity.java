@@ -10,15 +10,16 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText phn;
-
     private EditText pass;
-
     private Button add;
-
     private Button signup;
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,33 +32,31 @@ public class MainActivity extends AppCompatActivity {
         add = findViewById(R.id.button);
         signup = findViewById(R.id.signup_button);
 
+        mAuth = FirebaseAuth.getInstance();
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String phoneInput = phn.getText().toString();
+                String emailInput = phn.getText().toString();
                 String passInput = pass.getText().toString();
 
-                if (phoneInput.equals("123") && passInput.equals("123")) {
-                    Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(MainActivity.this, "Invalid phone or password", Toast.LENGTH_SHORT).show();
-                }
-
-
+                // Using firebase auth signin
+                mAuth.signInWithEmailAndPassword(emailInput, passInput)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) { // Login successful
+                                Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                                startActivity(intent);
+                                finish();
+                            } else { // Login failed
+                                Toast.makeText(MainActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
 
-
-
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
-                startActivity(intent);
-            }
+        signup.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SignupActivity.class);
+            startActivity(intent);
         });
     }
 }
-
