@@ -8,6 +8,21 @@
     android:padding="24dp"
     android:gravity="center_horizontal">
 
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="-160dp"
+        android:layout_marginTop="0dp"
+        android:background="#E0F7FA"
+        android:clickable="true"
+        android:contentDescription="Back"
+        android:focusable="true"
+        android:src="@android:drawable/ic_media_previous"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#1D42B1" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,4 +63,5 @@
                 />
         </TableRow>
     </TableLayout>
+
 </LinearLayout>

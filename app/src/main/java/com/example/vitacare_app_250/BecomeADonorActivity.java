@@ -116,6 +116,10 @@ public class BecomeADonorActivity extends AppCompatActivity {
             });
         });
 
+        findViewById(R.id.backButton).setOnClickListener(v -> {
+            Log.d("BackButton", "Back button clicked");
+            finish();
+        });
 
     }
 }

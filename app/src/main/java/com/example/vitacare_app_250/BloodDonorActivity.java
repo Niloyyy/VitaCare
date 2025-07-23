@@ -1,5 +1,5 @@
 package com.example.vitacare_app_250;
-
+import android.util.Log;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +17,11 @@ public class BloodDonorActivity extends AppCompatActivity {
 
         findViewById(R.id.findadonor).setOnClickListener(v -> {
             startActivity(new Intent(this, FindADonorActivity.class));
+        });
+
+        findViewById(R.id.backButton).setOnClickListener(v -> {
+//            Log.d("BackButton", "Back button clicked");
+            finish();
         });
     }
 

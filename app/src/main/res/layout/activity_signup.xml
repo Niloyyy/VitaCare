@@ -8,16 +8,6 @@
     android:background="#E0F7FA"
     android:padding="24dp">
 
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="Back"
-        android:src="@android:drawable/ic_media_previous"
-        app:tint="#1D42B1"
-        android:layout_gravity="start"
-        android:layout_marginBottom="1dp" />
 
 
 
@@ -87,5 +77,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/signup_submit_button" />
+
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="#E0F7FA"
+        android:contentDescription="Back"
+        android:src="@android:drawable/ic_media_previous"
+        android:clickable="true"
+        android:focusable="true"
+        app:tint="#1D42B1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

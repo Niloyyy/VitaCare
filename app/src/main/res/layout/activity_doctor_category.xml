@@ -11,18 +11,6 @@
         android:layout_height="wrap_content">
 
         <!-- Back button positioned top-left -->
-        <ImageButton
-            android:id="@+id/backButton"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="Back"
-            android:src="@android:drawable/ic_media_previous"
-            app:tint="#1D42B1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"/>
 
         <!-- Main content container -->
         <LinearLayout
@@ -88,6 +76,21 @@
                     android:textColor="@android:color/white" />
             </LinearLayout>
         </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="#E0F7FA"
+            android:contentDescription="Back"
+            android:src="@android:drawable/ic_media_previous"
+            android:clickable="true"
+            android:focusable="true"
+            app:tint="#1D42B1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"/>
 
     </RelativeLayout>
 </ScrollView>

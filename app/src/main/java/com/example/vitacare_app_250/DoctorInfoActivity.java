@@ -72,5 +72,9 @@ public class DoctorInfoActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {}
         });
+
+        findViewById(R.id.backButton).setOnClickListener(v -> {
+            finish();
+        });
     }
 }

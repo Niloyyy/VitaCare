@@ -53,5 +53,9 @@ public class SignupActivity extends AppCompatActivity {
 
             }
         });
+
+        findViewById(R.id.backButton).setOnClickListener(v -> {
+            finish();
+        });
     }
 }

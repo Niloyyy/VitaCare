@@ -22,5 +22,9 @@ public class DoctorCategoryActivity extends AppCompatActivity {
             Intent intent = new Intent(this, HeartSpecialistActivity.class);
             startActivity(intent);
         });
+
+        findViewById(R.id.backButton).setOnClickListener(v -> {
+            finish();
+        });
     }
 }
