@@ -22,6 +22,7 @@
         <activity android:name=".BloodDonorActivity" />
         <activity android:name=".BecomeADonorActivity" />
         <activity android:name=".FindADonorActivity" />
+        <activity android:name=".HospitalDetailActivity"/>
 
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>

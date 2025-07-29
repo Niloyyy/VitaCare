@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E0F7FA"
+    android:background="@drawable/gradient_background"
     android:padding="24dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
 
-        <!-- Back button positioned top-left -->
+        <!-- Back Button INSIDE RelativeLayout -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Back"
+            android:src="@android:drawable/ic_media_previous"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            app:tint="#FFFFFF" />
 
         <!-- Main content container -->
         <LinearLayout
@@ -76,21 +91,5 @@
                     android:textColor="@android:color/white" />
             </LinearLayout>
         </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/backButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="#E0F7FA"
-            android:contentDescription="Back"
-            android:src="@android:drawable/ic_media_previous"
-            android:clickable="true"
-            android:focusable="true"
-            app:tint="#1D42B1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"/>
-
     </RelativeLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

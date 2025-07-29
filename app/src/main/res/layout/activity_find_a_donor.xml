@@ -1,67 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ee908e"
-    android:padding="24dp"
-    android:gravity="center_horizontal">
+    android:background="@drawable/gradient_background"
+    android:padding="24dp">
 
     <ImageButton
         android:id="@+id/backButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="-160dp"
-        android:layout_marginTop="0dp"
-        android:background="#E0F7FA"
+        android:background="@android:color/transparent"
         android:clickable="true"
         android:contentDescription="Back"
         android:focusable="true"
         android:src="@android:drawable/ic_media_previous"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="#1D42B1" />
+        app:layout_constraintVertical_bias="0.004"
+        app:tint="#ffffff" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Blood Donor list"
+        android:textColor="#ffffff"
         android:textSize="24dp"
-        android:textColor="#ec0b06"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp"
         android:textStyle="bold"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.044" />
+
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:padding="10dp"
         android:stretchColumns="*"
-        android:background="#761a18"
-        android:padding="10dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.119">
+
         <TableRow>
+
             <TextView
+                android:padding="8dp"
                 android:text="Name"
                 android:textColor="#000000"
-                android:textStyle="bold"
                 android:textSize="20dp"
-                android:padding="8dp"
-                />
+                android:textStyle="bold" />
+
             <TextView
+                android:padding="8dp"
                 android:text="Contact"
                 android:textColor="#000000"
-                android:textStyle="bold"
                 android:textSize="20dp"
-                android:padding="8dp"
-                />
+                android:textStyle="bold" />
+
             <TextView
+                android:padding="8dp"
                 android:text="Blood Group"
                 android:textColor="#000000"
-                android:textStyle="bold"
                 android:textSize="20dp"
-                android:padding="8dp"
-                />
+                android:textStyle="bold" />
         </TableRow>
     </TableLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
