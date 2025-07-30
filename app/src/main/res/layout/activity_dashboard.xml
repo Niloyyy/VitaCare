@@ -31,7 +31,7 @@
         android:layout_height="220dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="8dp"
-        android:background="@android:color/white"
+        app:cardBackgroundColor="@android:color/white"
         android:padding="16dp"
         app:layout_constraintTop_toBottomOf="@id/backButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,6 +93,16 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#036c57"
             android:text="Blood Donor"
+            android:layout_marginBottom="16dp"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/buttonMyProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#013026"
+            android:text="My Profile"
             android:textColor="@android:color/white" />
     </LinearLayout>
 
