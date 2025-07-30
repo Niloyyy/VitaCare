@@ -92,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#036c57"
-            android:text="Blood Donor"
+            android:text="Blood Link"
             android:layout_marginBottom="16dp"
             android:textColor="@android:color/white" />
 

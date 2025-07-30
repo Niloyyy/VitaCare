@@ -1,80 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
-    android:padding="24dp">
+    android:background="#ee908e"
+    android:padding="24dp"
+    android:gravity="center_horizontal">
 
     <ImageButton
         android:id="@+id/backButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@android:color/transparent"
+        android:layout_marginStart="-160dp"
+        android:layout_marginTop="0dp"
+        android:background="#E0F7FA"
         android:clickable="true"
         android:contentDescription="Back"
         android:focusable="true"
         android:src="@android:drawable/ic_media_previous"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.004"
-        app:tint="#ffffff" />
+        app:tint="#1D42B1" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/headerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Blood Donor list"
-        android:textColor="#ffffff"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044" />
+        android:text="Blood Donor List"
+        android:textSize="24sp"
+        android:textColor="#ece8e2"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold" />
 
     <TableLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/donorTable"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
+        android:background="#761a18"
         android:padding="10dp"
         android:stretchColumns="*"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.119">
+        android:elevation="4dp">
 
         <TableRow>
-
             <TextView
-                android:padding="8dp"
                 android:text="Name"
                 android:textColor="#000000"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:padding="8dp" />
 
             <TextView
-                android:padding="8dp"
                 android:text="Contact"
                 android:textColor="#000000"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:padding="8dp" />
 
             <TextView
-                android:padding="8dp"
                 android:text="Blood Group"
                 android:textColor="#000000"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:padding="8dp" />
         </TableRow>
     </TableLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
