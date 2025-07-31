@@ -48,21 +48,25 @@
                     android:paddingHorizontal="16dp"
                     android:textColorHint="#1D42B1" />
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/BloodGrp"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
-                    android:layout_marginBottom="24dp"
-                    android:background="@drawable/rounded_input"
-                    android:hint="Blood Group"
-                    android:inputType="text"
-                    android:paddingHorizontal="16dp"
-                    android:textColorHint="#1D42B1" />
+                    android:background="@drawable/edittext_background"
+                    android:drawableEnd="@drawable/ic_dropdown_arrow"
+                    android:focusable="false"
+                    android:hint="Select Blood Group"
+                    android:textColorHint="#1D42B1"
+                    android:inputType="none"
+                    android:padding="12dp"
+                    android:textColor="#000000"
+                    android:paddingHorizontal="16dp"/>
 
                 <Button
                     android:id="@+id/submitBtn"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginBottom="24dp"
                     android:backgroundTint="#1D42B1"
                     android:padding="12dp"

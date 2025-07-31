@@ -5,6 +5,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.Query;
@@ -75,6 +77,11 @@ public class BecomeADonorActivity extends AppCompatActivity {
 //        });
 
         // if same credentials are submitted multiple time then then it'll not add the donor info to RT DB
+        String[] bloodGroups = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.blood_group_dropdown_item, bloodGroups);
+        ((AutoCompleteTextView) bloodGroup).setAdapter(adapter);
+        bloodGroup.setOnClickListener(v -> ((AutoCompleteTextView) bloodGroup).showDropDown());
+
         submitButton.setOnClickListener(v -> {
             String name = nameInput.getText().toString().trim();
             String number = contactNumber.getText().toString().trim();
@@ -83,7 +90,12 @@ public class BecomeADonorActivity extends AppCompatActivity {
             List<String> validBloodGroups = Arrays.asList("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-");
 
             if (!validBloodGroups.contains(bloodGrp)) {
-                Toast.makeText(this, "Invalid blood group!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "❌ Invalid blood group!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (number.length() != 11 || !number.matches("\\d{11}")) {
+                Toast.makeText(this, "❌ Phone number must be exactly 11 digits!", Toast.LENGTH_SHORT).show();
                 return;
             }
 
