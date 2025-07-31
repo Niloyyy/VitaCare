@@ -16,11 +16,13 @@
         android:background="@android:color/transparent"
         android:contentDescription="Back"
         android:src="@android:drawable/ic_media_previous"
-        app:tint="#1D42B1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"/>
+        app:layout_constraintVertical_bias="0.024"
+        app:tint="#ffffff" />
 
     <!-- CardView centered horizontally below the back button -->
     <androidx.cardview.widget.CardView
@@ -29,7 +31,7 @@
         android:layout_height="220dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="8dp"
-        android:background="@android:color/white"
+        app:cardBackgroundColor="@android:color/white"
         android:padding="16dp"
         app:layout_constraintTop_toBottomOf="@id/backButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +92,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#036c57"
-            android:text="Blood Donor"
+            android:text="Blood Link"
+            android:layout_marginBottom="16dp"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/buttonMyProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#013026"
+            android:text="My Profile"
             android:textColor="@android:color/white" />
     </LinearLayout>
 

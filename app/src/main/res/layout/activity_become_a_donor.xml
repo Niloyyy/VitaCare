@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E0F7FA"
+    android:background="@drawable/gradient_background"
+    android:outlineAmbientShadowColor="@color/black"
     android:padding="24dp">
 
 
@@ -13,11 +16,15 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="98dp"
-            android:layout_marginBottom="240dp"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.28">
 
                 <EditText
                     android:id="@+id/Name"
@@ -64,23 +71,22 @@
                     android:textStyle="bold" />
         </LinearLayout>
 
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Back"
+            android:src="@android:drawable/ic_media_previous"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.049"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.024"
+            app:tint="#ffffff" />
 
-                <ImageButton
-                android:id="@+id/backButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="#E0F7FA"
-                android:contentDescription="Back"
-                android:src="@android:drawable/ic_media_previous"
-                android:clickable="true"
-                android:focusable="true"
-                app:tint="#1D42B1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"/>
 
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 

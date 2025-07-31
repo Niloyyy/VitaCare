@@ -31,46 +31,37 @@
         android:textColor="#ec0b06"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
-        android:textStyle="bold" />
-
+        android:textStyle="bold"
+        />
     <TableLayout
-        android:id="@+id/donorTable"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:stretchColumns="*"
         android:background="#761a18"
         android:padding="10dp">
-
         <TableRow>
             <TextView
                 android:text="Name"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:padding="8dp" />
+                android:padding="8dp"
+                />
             <TextView
                 android:text="Contact"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:padding="8dp" />
+                android:padding="8dp"
+                />
             <TextView
                 android:text="Blood Group"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:padding="8dp" />
+                android:padding="8dp"
+                />
         </TableRow>
     </TableLayout>
-
-    <!-- RecyclerView to show donor list -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/donorRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1"
-        android:background="#fff"
-        android:padding="10dp" />
 
 </LinearLayout>
