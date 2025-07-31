@@ -56,7 +56,7 @@ public class FindADonorActivity extends AppCompatActivity {
     private void addDonorToTable(String name, String contact, String bloodGroup) {
         TableRow row = new TableRow(this);
         row.setPadding(0, 4, 0, 4); // space between rows
-        row.setBackgroundColor(getResources().getColor(android.R.color.white));
+        row.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
         TextView nameText = createCell(name);
         TextView contactText = createCell(contact);
@@ -84,7 +84,8 @@ public class FindADonorActivity extends AppCompatActivity {
         tv.setTextSize(16);
         tv.setPadding(16, 8, 16, 8);
         tv.setTextColor(getResources().getColor(android.R.color.black));
-        tv.setBackgroundColor(getResources().getColor(android.R.color.white));
+        tv.setTypeface(null, android.graphics.Typeface.BOLD);
+//        tv.setBackgroundColor(getResources().getColor(android.R.color.white));
         return tv;
     }
 }
