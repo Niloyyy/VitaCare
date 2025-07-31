@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="#FF6F61">
+
+    <Button
+        android:id="@+id/joinAsDoctor"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Join as a Doctor"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#3F51B5"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:elevation="4dp"
+        android:padding="12dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/joinAsPatient"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Join as a Patient"
+        android:backgroundTint="#009688"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:elevation="4dp"
+        android:padding="12dp"
+        android:textStyle="bold" />
+</LinearLayout>
