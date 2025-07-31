@@ -3,7 +3,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -16,7 +15,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 public class BecomeADonorActivity extends AppCompatActivity {
 
@@ -78,7 +76,7 @@ public class BecomeADonorActivity extends AppCompatActivity {
 
         // if same credentials are submitted multiple time then then it'll not add the donor info to RT DB
         String[] bloodGroups = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.blood_group_dropdown_item, bloodGroups);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.activity_blood_group_dropdown_item, bloodGroups);
         ((AutoCompleteTextView) bloodGroup).setAdapter(adapter);
         bloodGroup.setOnClickListener(v -> ((AutoCompleteTextView) bloodGroup).showDropDown());
 
