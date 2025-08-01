@@ -77,7 +77,7 @@ public class DoctorVerification extends AppCompatActivity {
 
                 if (found) {
                     Toast.makeText(DoctorVerification.this, "Your credentials are valid", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(DoctorVerification.this, DoctorSignUp.class);
+                    Intent intent = new Intent(DoctorVerification.this, DoctorLogin.class);
                     startActivity(intent);
                     finish();
                 } else {

@@ -9,25 +9,25 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
+public class DoctorLogin extends AppCompatActivity {
 
-    private EditText phn;
-    private EditText pass;
-    private Button add;
-    private Button signup;
-
+    private EditText email , pass;
+    private Button add , signup;
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_doctor_login);
 
-        phn = findViewById(R.id.email);
+        email = findViewById(R.id.email);
         pass = findViewById(R.id.password);
         add = findViewById(R.id.button);
         signup = findViewById(R.id.signup_button);
@@ -37,31 +37,29 @@ public class MainActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String emailInput = phn.getText().toString();
+                String emailInput = email.getText().toString();
                 String passInput = pass.getText().toString();
 
                 if(emailInput.isEmpty() || passInput.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Fillup Every Credentials", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DoctorLogin.this, "Fillup Every Credentials", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                // Using firebase auth signing
-                mAuth.signInWithEmailAndPassword(emailInput, passInput)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) { // Login successful
-                        Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                mAuth.signInWithEmailAndPassword(emailInput , passInput).addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        Intent intent = new Intent(DoctorLogin.this , DoctorDashboard.class);
                         startActivity(intent);
                         finish();
-                    } else { // Login failed
-                        Toast.makeText(MainActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(DoctorLogin.this , "Invalid Credentials!" , Toast.LENGTH_SHORT).show();
                     }
                 });
             }
         });
 
         signup.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, SignupActivity.class);
-            startActivity(intent);
+           Intent intent = new Intent(DoctorLogin.this , DoctorSignUp.class);
+           startActivity(intent);
+           //finish();
         });
     }
 }
