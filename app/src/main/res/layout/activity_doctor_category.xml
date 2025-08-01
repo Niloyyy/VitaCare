@@ -59,7 +59,7 @@
                     android:id="@+id/buttonHeart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="❤️ Heart Specialist"
+                    android:text="Cardiologist"
                     android:backgroundTint="#EF5350"
                     android:textColor="@android:color/white"
                     android:layout_marginBottom="16dp" />
@@ -68,7 +68,7 @@
                     android:id="@+id/buttonOrtho"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="🦴 Orthopedics"
+                    android:text=" Orthopedics"
                     android:backgroundTint="#66BB6A"
                     android:textColor="@android:color/white"
                     android:layout_marginBottom="16dp" />
@@ -77,7 +77,7 @@
                     android:id="@+id/buttonMedicine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="💊 Medicine"
+                    android:text="Ophthalmologist"
                     android:backgroundTint="#42A5F5"
                     android:textColor="@android:color/white"
                     android:layout_marginBottom="16dp" />
@@ -86,7 +86,7 @@
                     android:id="@+id/buttonKidney"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="🩺 Kidney Specialist"
+                    android:text="Nephrologist"
                     android:backgroundTint="#AB47BC"
                     android:textColor="@android:color/white" />
             </LinearLayout>
