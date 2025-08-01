@@ -1,25 +1,27 @@
 package com.example.vitacare_app_250;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class DoctorLogin extends AppCompatActivity {
 
-    private EditText email , pass;
-    private Button add , signup;
+    private EditText email, pass;
+    private Button add, signup;
     private FirebaseAuth mAuth;
+
+    private static final String PREFS_NAME = "user_session";
+    private static final String JWT_KEY = "jwt_token";
+    private static final String USER_TYPE_KEY = "user_type";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,35 +33,44 @@ public class DoctorLogin extends AppCompatActivity {
         pass = findViewById(R.id.password);
         add = findViewById(R.id.button);
         signup = findViewById(R.id.signup_button);
-
         mAuth = FirebaseAuth.getInstance();
 
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String emailInput = email.getText().toString();
-                String passInput = pass.getText().toString();
+        add.setOnClickListener(v -> {
+            String emailInput = email.getText().toString().trim();
+            String passInput = pass.getText().toString().trim();
 
-                if(emailInput.isEmpty() || passInput.isEmpty()){
-                    Toast.makeText(DoctorLogin.this, "Fillup Every Credentials", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                mAuth.signInWithEmailAndPassword(emailInput , passInput).addOnCompleteListener(task -> {
-                    if(task.isSuccessful()){
-                        Intent intent = new Intent(DoctorLogin.this , DoctorDashboard.class);
-                        startActivity(intent);
-                        finish();
-                    }else{
-                        Toast.makeText(DoctorLogin.this , "Invalid Credentials!" , Toast.LENGTH_SHORT).show();
-                    }
-                });
+            if (emailInput.isEmpty() || passInput.isEmpty()) {
+                Toast.makeText(this, "Fill all credentials", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            mAuth.signInWithEmailAndPassword(emailInput, passInput).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    if (user != null) {
+                        user.getIdToken(true).addOnSuccessListener(result -> {
+                            String token = result.getToken();
+
+                            // Save JWT and user type
+                            SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                            prefs.edit()
+                                    .putString(JWT_KEY, token)
+                                    .putString(USER_TYPE_KEY, "doctor")
+                                    .apply();
+
+                            Toast.makeText(this, "Doctor login successful", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(this, DoctorDashboard.class));
+                            finish();
+                        });
+                    }
+                } else {
+                    Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+                }
+            });
         });
 
         signup.setOnClickListener(v -> {
-           Intent intent = new Intent(DoctorLogin.this , DoctorSignUp.class);
-           startActivity(intent);
-           //finish();
+            startActivity(new Intent(this, DoctorSignUp.class));
         });
     }
 }

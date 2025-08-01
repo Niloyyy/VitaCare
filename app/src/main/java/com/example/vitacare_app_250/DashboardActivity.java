@@ -21,7 +21,6 @@ public class DashboardActivity extends AppCompatActivity {
         String token = prefs.getString(TOKEN_KEY, null);
         String userType = prefs.getString(USER_TYPE_KEY, "unknown");
 
-        // Token check
         if (token == null || token.isEmpty()) {
             Toast.makeText(this, "Session expired. Please log in again.", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, JoinActivity.class));
@@ -29,14 +28,12 @@ public class DashboardActivity extends AppCompatActivity {
             return;
         }
 
-        // Optional redirection to Doctor Dashboard
         if ("doctor".equals(userType)) {
             startActivity(new Intent(this, DoctorDashboard.class));
             finish();
             return;
         }
 
-        // Load Patient Dashboard if userType is "patient"
         setContentView(R.layout.activity_dashboard);
 
         findViewById(R.id.buttonDoctorInfo).setOnClickListener(v -> {
