@@ -1,37 +1,54 @@
 package com.example.vitacare_app_250;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class DoctorDashboard extends AppCompatActivity {
 
-    private Button logoutButton;
+    EditText doctorName, doctorContact, doctorMainSpecialty, doctorSpecialist, doctorDegree, doctorChamberAddress;
+    Button signUpButton;
+    TextView loginRedirectText;
+    ImageButton backButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_doctor_dashboard);
+        setContentView(R.layout.activity_doctor_add_info);
 
-        Button logoutButton = findViewById(R.id.logoutButton);
+        // Bind views
+        doctorName = findViewById(R.id.doctor_name);
+        doctorContact = findViewById(R.id.doctor_contact);
+        doctorMainSpecialty = findViewById(R.id.doctor_main_specialty);
+        doctorSpecialist = findViewById(R.id.doctor_specialist);
+        doctorDegree = findViewById(R.id.doctor_degree);
+        doctorChamberAddress = findViewById(R.id.doctor_chamber_address);
+        signUpButton = findViewById(R.id.doctor_signup_button);
+        loginRedirectText = findViewById(R.id.doctor_login_redirect_text);
+        backButton = findViewById(R.id.backButton);
 
-        logoutButton.setOnClickListener(v -> {
-            SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
-            prefs.edit().remove("jwt_token").remove("user_type").apply();
+        // Back button action
+        backButton.setOnClickListener(v -> finish());
 
-            Toast.makeText(DoctorDashboard.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(DoctorDashboard.this, JoinActivity.class));
-            finish();
+        // Sign up logic can be added here
+        signUpButton.setOnClickListener(v -> {
+            String name = doctorName.getText().toString().trim();
+            String contact = doctorContact.getText().toString().trim();
+            String specialty = doctorMainSpecialty.getText().toString().trim();
+            String specialist = doctorSpecialist.getText().toString().trim();
+            String degree = doctorDegree.getText().toString().trim();
+            String chamber = doctorChamberAddress.getText().toString().trim();
+
+            // You can now save these values to Firebase or validate them
         });
 
-
+        // Login redirect action can be added if needed
+        loginRedirectText.setOnClickListener(v -> {
+            // Example: startActivity(new Intent(this, DoctorLoginActivity.class));
+        });
     }
 }
