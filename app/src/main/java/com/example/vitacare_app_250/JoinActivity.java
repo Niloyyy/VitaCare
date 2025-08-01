@@ -19,37 +19,36 @@ public class JoinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Check for stored JWT token
+        //check for stored JWT token
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         String savedToken = prefs.getString(JWT_KEY, null);
 
         if (savedToken != null) {
             // Token exists, skip login
-            Intent intent = new Intent(JoinActivity.this, DashboardActivity.class);
+            Intent intent = new Intent(JoinActivity.this, DoctorVerification.class);
             startActivity(intent);
             finish();
             return;
         }
 
-        // No token found, show the Join screen
+        //no token found, show the Join screen
         setContentView(R.layout.activity_join);
 
         Button joinAsDoctor = findViewById(R.id.joinAsDoctor);
         Button joinAsPatient = findViewById(R.id.joinAsPatient);
 
         joinAsDoctor.setOnClickListener(v -> {
-            Intent intent = new Intent(JoinActivity.this, DoctorCategoryActivity.class);
+            Intent intent = new Intent(JoinActivity.this, DoctorVerification.class);
             startActivity(intent);
         });
 
         joinAsPatient.setOnClickListener(v -> {
-            // Optional: Try to get Firebase JWT after user login
             FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
             if (currentUser != null) {
                 currentUser.getIdToken(true).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         String token = task.getResult().getToken();
-                        // Save the token in SharedPreferences
+                        //save the token in SharedPreferences
                         prefs.edit().putString(JWT_KEY, token).apply();
 
                         // Navigate to MainActivity
@@ -57,7 +56,7 @@ public class JoinActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        // Token fetch failed, fallback
+                        //token fetch failed, fallback
                         startActivity(new Intent(JoinActivity.this, MainActivity.class));
                         finish();
                     }

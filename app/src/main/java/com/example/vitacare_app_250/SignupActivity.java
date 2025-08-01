@@ -41,16 +41,14 @@ public class SignupActivity extends AppCompatActivity {
             }
             else {
                 mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show();
-                                finish(); // Go to the login page
-                            } else {
-                                Toast.makeText(this, "Signup failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
-
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show();
+                        finish(); // Go to the login page
+                    } else {
+                        Toast.makeText(this, "Signup failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 

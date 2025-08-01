@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="#B2BEB5"
+    >
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:inputType="textPersonName"
+        android:padding="12dp"
+        android:backgroundTint="#2196F3"
+        android:textColorHint="#000000"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        android:backgroundTint="#2196F3"
+        android:textColorHint="#000000"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/editTextLicense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="License Number"
+        android:inputType="text"
+        android:maxLength="7"
+        android:padding="12dp"
+        android:backgroundTint="#2196F3"
+        android:textColorHint="#000000"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/buttonVerify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verify"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"
+        android:padding="12dp"
+        android:textStyle="bold" />
+
+</LinearLayout>

@@ -40,7 +40,12 @@ public class MainActivity extends AppCompatActivity {
                 String emailInput = phn.getText().toString();
                 String passInput = pass.getText().toString();
 
-                // Using firebase auth signin
+                if(emailInput.isEmpty() || passInput.isEmpty()){
+                    Toast.makeText(MainActivity.this, "Fillup Every Credentials", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Using firebase auth signing
                 mAuth.signInWithEmailAndPassword(emailInput, passInput)
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) { // Login successful
