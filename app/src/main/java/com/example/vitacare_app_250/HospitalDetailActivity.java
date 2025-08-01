@@ -1,39 +1,46 @@
-package com.example.vitacare_app_250;
+ package com.example.vitacare_app_250;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class HospitalDetailActivity extends AppCompatActivity {
 
-    TextView hospitalInfo;
+    TextView nameText, addressText, bedCountText, icuCountText;
+    ImageButton backButton;
+    ImageView hospitalImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital_detail);
 
-        hospitalInfo = findViewById(R.id.textViewHospitalDetails);
+        // View bindings
+        hospitalImage = findViewById(R.id.hospitalImage);
+        nameText = findViewById(R.id.hospitalName);
+        addressText = findViewById(R.id.hospitalAddress);
+        bedCountText = findViewById(R.id.hospitalCapacity);  // Reusing old ID
+        icuCountText = findViewById(R.id.hospitalICU); // Reusing old ID
+        backButton = findViewById(R.id.backButton);
 
-        String hospitalName = getIntent().getStringExtra("hospital_name");
+        // Get data from Intent
+        String name = getIntent().getStringExtra("name");
+        String address = getIntent().getStringExtra("address");
+        String beds = getIntent().getStringExtra("available_beds");
+        String icu = getIntent().getStringExtra("available_icu");
 
-        if (hospitalName != null) {
-            switch (hospitalName) {
-                case "Mount Adora Hospital":
-                    hospitalInfo.setText("Name: Mount Adora Hospital\nLocation: Nayasarak, Sylhet\nCapacity: 200 beds\nFacilities: ICU, CCU, Pharmacy, 24/7 Emergency");
-                    break;
-                case "Osmani Hospital":
-                    hospitalInfo.setText("Name: Osmani Medical College Hospital\nLocation: Uposhohor, Sylhet\nCapacity: 500+ beds\nFacilities: Govt. Hospital, Emergency, Surgery, Blood Bank");
-                    break;
-                default:
-                    hospitalInfo.setText("Details not available.");
-                    break;
-            }
-        }
-        findViewById(R.id.backButton).setOnClickListener(v -> {
-            finish();
-        });
+        // Set data to views
+        nameText.setText(name != null ? name : "N/A");
+        addressText.setText(address != null ? address : "N/A");
+        String bedsCount = getIntent().getStringExtra("available_beds");
+        bedCountText.setText("Beds: " + (bedsCount != null ? bedsCount : "N/A"));
+
+        String icuBeds = getIntent().getStringExtra("available_icu");
+        icuCountText.setText("ICU Beds: " + (icuBeds != null ? icuBeds : "N/A"));
+
+        // Back button action
+        backButton.setOnClickListener(v -> finish());
     }
-
 }
