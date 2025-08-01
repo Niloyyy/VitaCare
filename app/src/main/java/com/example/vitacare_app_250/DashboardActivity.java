@@ -11,15 +11,17 @@ public class DashboardActivity extends AppCompatActivity {
 
     private static final String PREFS_NAME = "user_session";
     private static final String TOKEN_KEY = "jwt_token";
+    private static final String USER_TYPE_KEY = "user_type";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //token check before loading layout
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         String token = prefs.getString(TOKEN_KEY, null);
+        String userType = prefs.getString(USER_TYPE_KEY, "unknown");
 
+        // Token check
         if (token == null || token.isEmpty()) {
             Toast.makeText(this, "Session expired. Please log in again.", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, JoinActivity.class));
@@ -27,6 +29,14 @@ public class DashboardActivity extends AppCompatActivity {
             return;
         }
 
+        // Optional redirection to Doctor Dashboard
+        if ("doctor".equals(userType)) {
+            startActivity(new Intent(this, DoctorDashboard.class));
+            finish();
+            return;
+        }
+
+        // Load Patient Dashboard if userType is "patient"
         setContentView(R.layout.activity_dashboard);
 
         findViewById(R.id.buttonDoctorInfo).setOnClickListener(v -> {
@@ -50,7 +60,7 @@ public class DashboardActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.logoutButton).setOnClickListener(v -> {
-            prefs.edit().remove(TOKEN_KEY).apply();
+            prefs.edit().remove(TOKEN_KEY).remove(USER_TYPE_KEY).apply();
             Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, JoinActivity.class));
             finish();

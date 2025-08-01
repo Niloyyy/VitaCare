@@ -1,6 +1,7 @@
 package com.example.vitacare_app_250;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    private static final String PREFS_NAME = "user_session";
+    private static final String JWT_KEY = "jwt_token";
+    private static final String USER_TYPE_KEY = "user_type";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,25 +42,36 @@ public class MainActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String emailInput = phn.getText().toString();
-                String passInput = pass.getText().toString();
+                String emailInput = phn.getText().toString().trim();
+                String passInput = pass.getText().toString().trim();
 
-                if(emailInput.isEmpty() || passInput.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Fillup Every Credentials", Toast.LENGTH_SHORT).show();
+                if (emailInput.isEmpty() || passInput.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Fill in all credentials", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                // Using firebase auth signing
                 mAuth.signInWithEmailAndPassword(emailInput, passInput)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) { // Login successful
-                        Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
-                        startActivity(intent);
-                        finish();
-                    } else { // Login failed
-                        Toast.makeText(MainActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                mAuth.getCurrentUser().getIdToken(true).addOnSuccessListener(result -> {
+                                    String token = result.getToken();
+
+                                    // Save session info
+                                    SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = prefs.edit();
+                                    editor.putString(JWT_KEY, token);
+                                    editor.putString(USER_TYPE_KEY, "patient");  // Mark user as patient
+                                    editor.apply();
+
+                                    // Navigate to patient dashboard
+                                    Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                });
+                            } else {
+                                Toast.makeText(MainActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
 

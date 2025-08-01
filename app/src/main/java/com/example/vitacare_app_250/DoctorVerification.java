@@ -27,6 +27,10 @@ public class DoctorVerification extends AppCompatActivity {
     private Button add;
     private DatabaseReference doctorsRef;
 
+    private static final String PREFS_NAME = "user_session";
+    private static final String JWT_KEY = "jwt_token";
+    private static final String USER_TYPE_KEY = "user_type";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
