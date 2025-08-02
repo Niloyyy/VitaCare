@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">VitaCare_app_250</string>
+
+    <string-array name="specialist_options">
+        <item>Select Specialist</item>
+        <item>Cardiology</item>
+        <item>Orthopedics</item>
+        <item>Neurology</item>
+    </string-array>
 </resources>

@@ -22,13 +22,13 @@ public class DoctorInfoActivity extends AppCompatActivity {
     ArrayAdapter<String> adapter;
 
     String[] doctors = {
-            "Dr. Dipu Debnath",
-            "Dr. Husne Ara",
-            "Dr. MD Masum",
-            "Dr. Sadia Sultana",
-            "Dr. Forhad Rabbi",
-            "Dr. HUMA",
-            "Dr. Bayzid"
+            "Dr. XYZ",
+            "Dr. PQR",
+            "Dr. MNO",
+            "Dr. ABC",
+            "Dr. DEF",
+            "Dr. GHI",
+            "Dr. JKL"
     };
 
     @Override

@@ -2,7 +2,6 @@ package com.example.vitacare_app_250;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,8 +17,26 @@ public class DoctorCategoryActivity extends AppCompatActivity {
         Button btnKidney = findViewById(R.id.buttonKidney);
 
         btnHeart.setOnClickListener(v -> {
-            // Example: Open heart specialist list
-            Intent intent = new Intent(this, HeartSpecialistActivity.class);
+            Intent intent = new Intent(this, DoctorListActivity.class);
+            intent.putExtra("specialty", "cardiology");
+            startActivity(intent);
+        });
+
+        btnOrtho.setOnClickListener(v -> {
+            Intent intent = new Intent(this, DoctorListActivity.class);
+            intent.putExtra("specialty", "orthopedics");
+            startActivity(intent);
+        });
+
+        btnMedicine.setOnClickListener(v -> {
+            Intent intent = new Intent(this, DoctorListActivity.class);
+            intent.putExtra("specialty", "neurology");
+            startActivity(intent);
+        });
+
+        btnKidney.setOnClickListener(v -> {
+            Intent intent = new Intent(this, DoctorListActivity.class);
+            intent.putExtra("specialty", "kidney");
             startActivity(intent);
         });
 

@@ -1,7 +1,8 @@
 package com.example.vitacare_app_250;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,11 +10,14 @@ public class SearchDoctorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search_doctor);
 
-        TextView tv = new TextView(this);
-        tv.setText("Search Doctor Page\n(Search functionality goes here)");
-        tv.setTextSize(24);
-        tv.setPadding(20, 20, 20, 20);
-        setContentView(tv);
+        Button cardiologyButton = findViewById(R.id.buttonCardiology);
+
+        cardiologyButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, DoctorListActivity.class);
+            intent.putExtra("specialty", "cardiology");
+            startActivity(intent);
+        });
     }
 }
