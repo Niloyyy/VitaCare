@@ -1,7 +1,6 @@
 package com.example.vitacare_app_250;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 public class DoctorVerification extends AppCompatActivity {
 
     private EditText name, license, email;
-    private Button add;
+    private Button verifyBtn;
     private DatabaseReference doctorsRef;
 
     @Override
@@ -32,11 +31,11 @@ public class DoctorVerification extends AppCompatActivity {
         name = findViewById(R.id.editTextName);
         email = findViewById(R.id.editTextEmail);
         license = findViewById(R.id.editTextLicense);
-        add = findViewById(R.id.buttonVerify);
+        verifyBtn = findViewById(R.id.buttonVerify);
 
         doctorsRef = FirebaseDatabase.getInstance().getReference("doctors");
 
-        add.setOnClickListener(v -> {
+        verifyBtn.setOnClickListener(v -> {
             String nameInput = name.getText().toString().trim();
             String emailInput = email.getText().toString().trim();
             String licenseInput = license.getText().toString().trim();
@@ -71,8 +70,8 @@ public class DoctorVerification extends AppCompatActivity {
 
                 if (found) {
                     Toast.makeText(DoctorVerification.this, "Credentials are valid", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(DoctorVerification.this, DoctorLogin.class);
-                    startActivity(intent);
+                    // 🔒 Do NOT store JWT or session here
+                    startActivity(new Intent(DoctorVerification.this, DoctorLogin.class));
                     finish();
                 } else {
                     Toast.makeText(DoctorVerification.this, "Invalid credentials", Toast.LENGTH_SHORT).show();

@@ -17,17 +17,15 @@ public class JoinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit().clear().apply();
-
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         String savedToken = prefs.getString(JWT_KEY, null);
         String userType = prefs.getString(USER_TYPE_KEY, null);
 
         if (savedToken != null && userType != null) {
             if (userType.equals("doctor")) {
-                startActivity(new Intent(JoinActivity.this, DoctorDashboard.class));
+                startActivity(new Intent(this, DoctorDashboard.class));
             } else if (userType.equals("patient")) {
-                startActivity(new Intent(JoinActivity.this, DashboardActivity.class));
+                startActivity(new Intent(this, DashboardActivity.class));
             }
             finish();
             return;
@@ -39,11 +37,11 @@ public class JoinActivity extends AppCompatActivity {
         Button joinAsPatient = findViewById(R.id.joinAsPatient);
 
         joinAsDoctor.setOnClickListener(v -> {
-            startActivity(new Intent(JoinActivity.this, DoctorVerification.class));
+            startActivity(new Intent(this, DoctorVerification.class));
         });
 
         joinAsPatient.setOnClickListener(v -> {
-            startActivity(new Intent(JoinActivity.this, MainActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
         });
     }
 }
