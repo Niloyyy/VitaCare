@@ -30,7 +30,7 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="#026FC9"
             android:text="Doctor Information"
-            android:textColor="#000000" />
+            android:textColor="#430178" />
 
         <Button
             android:id="@+id/buttonSearchDoctor"
@@ -39,7 +39,7 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="#41A1F0"
             android:text="Search Doctor"
-            android:textColor="#000000" />
+            android:textColor="#430178" />
 
         <Button
             android:id="@+id/buttonSearchHospital"
@@ -48,7 +48,7 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="#02E3C5"
             android:text="Search Hospital"
-            android:textColor="#000000" />
+            android:textColor="#430178" />
 
         <Button
             android:id="@+id/buttonblooddonor"
@@ -57,7 +57,7 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="#22D484"
             android:text="Blood Link"
-            android:textColor="#000000" />
+            android:textColor="#430178" />
 
 
     </LinearLayout>
@@ -82,7 +82,7 @@
         android:layout_width="56dp"
         android:layout_height="20dp"
         android:text="  Profile"
-        android:textColor="#000000"
+        android:textColor="#430178"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

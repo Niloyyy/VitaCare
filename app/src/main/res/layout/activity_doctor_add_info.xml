@@ -98,7 +98,7 @@
         android:layout_width="100dp"
         android:layout_height="55dp"
         android:layout_marginTop="48dp"
-        android:backgroundTint="#1D42B1"
+        android:backgroundTint="#430178"
         android:text="Done"
         android:textColor="#24CAB0"
         android:textStyle="bold"

@@ -57,7 +57,7 @@
                 android:text="Hospital Name"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:textColor="#092EE6"
+                android:textColor="#430178"
                 android:layout_marginBottom="16dp" />
 
             <!-- Address -->
@@ -67,7 +67,7 @@
                 android:text="Find Us:"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:textColor="#092EE6"
+                android:textColor="#430178"
                 android:layout_marginTop="8dp" />
 
             <TextView
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:text="Address goes here"
                 android:textSize="16sp"
-                android:textColor="#092EE6"
+                android:textColor="#430178"
                 android:layout_marginBottom="12dp" />
 
             <!-- Beds -->
@@ -86,7 +86,7 @@
                 android:text="Beds:"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:textColor="#092EE6"
+                android:textColor="#430178"
                 android:layout_marginTop="8dp" />
 
             <TextView
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:text="100"
                 android:textSize="16sp"
-                android:textColor="#092EE6"
+                android:textColor="#430178"
                 android:layout_marginBottom="12dp" />
 
             <!-- ICU Beds -->
@@ -105,7 +105,7 @@
                 android:text="ICU Beds:"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:textColor="#092EE6"
+                android:textColor="#430178"
                 android:layout_marginTop="8dp" />
 
             <TextView
@@ -114,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:text="20"
                 android:textSize="16sp"
-                android:textColor="#092EE6"
+                android:textColor="#430178"
                 android:layout_marginBottom="16dp" />
 
             <!-- Contact Us -->
@@ -124,7 +124,7 @@
                 android:text="Contact Us:"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:textColor="#092EE6"
+                android:textColor="#430178"
                 android:layout_marginTop="8dp" />
 
             <TextView
@@ -133,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:text="+8801XXXXXXXXX"
                 android:textSize="16sp"
-                android:textColor="#092EE6"
+                android:textColor="#430178"
                 android:layout_marginBottom="24dp" />
 
         </LinearLayout>
