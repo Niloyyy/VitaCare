@@ -12,7 +12,7 @@ import java.util.UUID;
 
 public class DoctorDashboard extends AppCompatActivity {
 
-    EditText doctorName, doctorContact, doctorDegree, doctorChamberAddress;
+    EditText doctorName, doctorContact, doctorDegree, doctorChamberAddress, doctorMainSpecialty;
     Spinner specialistSpinner;
     Button signUpButton;
     ImageButton backButton;
@@ -29,6 +29,7 @@ public class DoctorDashboard extends AppCompatActivity {
         doctorContact = findViewById(R.id.doctor_contact);
         doctorDegree = findViewById(R.id.doctor_degree);
         doctorChamberAddress = findViewById(R.id.doctor_chamber_address);
+        doctorMainSpecialty = findViewById(R.id.doctor_main_specialty); // <-- NEW FIELD
         specialistSpinner = findViewById(R.id.doctor_specialist_spinner);
         signUpButton = findViewById(R.id.doctor_signup_button);
         backButton = findViewById(R.id.backButton);
@@ -52,8 +53,9 @@ public class DoctorDashboard extends AppCompatActivity {
             String degree = doctorDegree.getText().toString().trim();
             String chamber = doctorChamberAddress.getText().toString().trim();
             String specialist = specialistSpinner.getSelectedItem().toString().toLowerCase();
+            String mainSpecialty = doctorMainSpecialty.getText().toString().trim();
 
-            if (name.isEmpty() || contact.isEmpty() || specialist.equalsIgnoreCase("select specialist")) {
+            if (name.isEmpty() || contact.isEmpty() || specialist.equalsIgnoreCase("select specialist") || mainSpecialty.isEmpty()) {
                 Toast.makeText(this, "Please fill all required fields", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -65,9 +67,10 @@ public class DoctorDashboard extends AppCompatActivity {
             HashMap<String, String> doctorMap = new HashMap<>();
             doctorMap.put("name", name);
             doctorMap.put("contact", contact);
-            doctorMap.put("specialist", specialist);
             doctorMap.put("degree", degree);
             doctorMap.put("chamber", chamber);
+            doctorMap.put("specialist", specialist); // category (e.g., cardiology)
+            doctorMap.put("speciality", mainSpecialty); // displayed (e.g., heart surgeon)
 
             // Save to Firebase under docs/specialist/docId
             docsRef.child(specialist).child(docId).setValue(doctorMap)

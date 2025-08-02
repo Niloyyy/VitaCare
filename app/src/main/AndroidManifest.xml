@@ -45,6 +45,7 @@
         <activity android:name=".FindADonorActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".HospitalDetailActivity" />
+        <activity android:name=".DoctorProfileActivity" />
         <activity android:name=".HeartSpecialistActivity" />
         <activity android:name=".UserProfileActivity" />
 <!--        <activity android:name=".JoinActivityType" />-->

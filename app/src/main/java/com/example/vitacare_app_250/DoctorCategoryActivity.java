@@ -36,7 +36,7 @@ public class DoctorCategoryActivity extends AppCompatActivity {
 
         btnKidney.setOnClickListener(v -> {
             Intent intent = new Intent(this, DoctorListActivity.class);
-            intent.putExtra("specialty", "kidney");
+            intent.putExtra("specialty", "nephrology"); // ✅ fixed
             startActivity(intent);
         });
 

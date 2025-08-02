@@ -4,7 +4,8 @@
     <string-array name="specialist_options">
         <item>Select Specialist</item>
         <item>Cardiology</item>
-        <item>Orthopedics</item>
         <item>Neurology</item>
+        <item>Orthopedics</item>
+        <item>Nephrology</item>
     </string-array>
 </resources>
