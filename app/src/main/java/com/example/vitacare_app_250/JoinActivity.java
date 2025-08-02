@@ -17,6 +17,8 @@ public class JoinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit().clear().apply();
+
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         String savedToken = prefs.getString(JWT_KEY, null);
         String userType = prefs.getString(USER_TYPE_KEY, null);

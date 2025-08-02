@@ -46,7 +46,7 @@
         <activity android:name=".HospitalDetailActivity" />
         <activity android:name=".HeartSpecialistActivity" />
         <activity android:name=".UserProfileActivity" />
-        <activity android:name=".JoinActivityType" />
+<!--        <activity android:name=".JoinActivityType" />-->
     </application>
 
 </manifest>
