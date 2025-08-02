@@ -34,11 +34,11 @@ public class HospitalDetailActivity extends AppCompatActivity {
         // Set data to views
         nameText.setText(name != null ? name : "N/A");
         addressText.setText(address != null ? address : "N/A");
-        String bedsCount = getIntent().getStringExtra("available_beds");
-        bedCountText.setText("Beds: " + (bedsCount != null ? bedsCount : "N/A"));
+        String bedsCount = getIntent().getStringExtra("beds");
+        bedCountText.setText("Availabe Beds: " + (bedsCount != null ? bedsCount : "N/A"));
 
-        String icuBeds = getIntent().getStringExtra("available_icu");
-        icuCountText.setText("ICU Beds: " + (icuBeds != null ? icuBeds : "N/A"));
+        String icuBeds = getIntent().getStringExtra("icu");
+        icuCountText.setText("Availabe ICU Beds: " + (icuBeds != null ? icuBeds : "N/A"));
 
         // Back button action
         backButton.setOnClickListener(v -> finish());
