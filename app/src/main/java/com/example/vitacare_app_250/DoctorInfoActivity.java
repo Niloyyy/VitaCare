@@ -9,10 +9,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.*;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class DoctorInfoActivity extends AppCompatActivity {
 
@@ -20,61 +22,71 @@ public class DoctorInfoActivity extends AppCompatActivity {
     EditText searchEditText;
     ListView listView;
     ArrayAdapter<String> adapter;
+    ArrayList<String> doctorList;
 
-    String[] doctors = {
-            "Dr. XYZ",
-            "Dr. PQR",
-            "Dr. MNO",
-            "Dr. ABC",
-            "Dr. DEF",
-            "Dr. GHI",
-            "Dr. JKL"
-    };
+    DatabaseReference docsRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_info);
 
+        // Initialize views
         searchIcon = findViewById(R.id.searchIcon);
         searchEditText = findViewById(R.id.searchEditText);
         listView = findViewById(R.id.listViewDoctors);
 
-        ArrayList<String> doctorList = new ArrayList<>(Arrays.asList(doctors));
+        doctorList = new ArrayList<>();
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, doctorList);
         listView.setAdapter(adapter);
 
-        // When search icon is clicked, show the EditText and focus it
-        searchIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        // Firebase reference to 'docs'
+        docsRef = FirebaseDatabase.getInstance().getReference("docs");
 
-                searchIcon.setVisibility(View.GONE);
-                searchEditText.setVisibility(View.VISIBLE);
-                searchEditText.requestFocus();
+        // Fetch all doctors from all specialties
+        loadDoctorsFromFirebase();
 
-                // Optional: Show keyboard
-                // InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                // imm.showSoftInput(searchEditText, InputMethodManager.SHOW_IMPLICIT);
-            }
+        // Search logic
+        searchIcon.setOnClickListener(v -> {
+            searchIcon.setVisibility(View.GONE);
+            searchEditText.setVisibility(View.VISIBLE);
+            searchEditText.requestFocus();
         });
 
-        // Listen for text input in search EditText and filter list accordingly
         searchEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s,int start,int count,int after) {}
-
-            @Override
-            public void onTextChanged(CharSequence s,int start,int before,int count) {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
                 adapter.getFilter().filter(s);
             }
-
-            @Override
-            public void afterTextChanged(Editable s) {}
+            @Override public void afterTextChanged(Editable s) {}
         });
 
-        findViewById(R.id.backButton).setOnClickListener(v -> {
-            finish();
+        // Back button
+        findViewById(R.id.backButton).setOnClickListener(v -> finish());
+    }
+
+    private void loadDoctorsFromFirebase() {
+        docsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                doctorList.clear(); // clear any old data
+
+                for (DataSnapshot specialistSnap : snapshot.getChildren()) {
+                    for (DataSnapshot doctorSnap : specialistSnap.getChildren()) {
+                        String doctorName = doctorSnap.child("name").getValue(String.class);
+                        if (doctorName != null) {
+                            doctorList.add(doctorName);
+                        }
+                    }
+                }
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle error
+            }
         });
     }
 }

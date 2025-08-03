@@ -47,7 +47,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
         holder.nameText.setText("Dr. " + name);
         holder.degreeText.setText("Degree: " + degree);
         holder.contactText.setText("Phone: " + contact);
-        holder.specialityText.setText("Speciality: " + speciality);
+        holder.specialityText.setText(speciality);
 
         final String finalSpeciality = speciality != null ? speciality : "No Speciality";
 
