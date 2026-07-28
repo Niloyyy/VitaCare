@@ -33,11 +33,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".DoctorCategoryActivity" />
-        <activity android:name=".DoctorListActivity"/>
-        <activity android:name=".SecondActivity" />
+        <activity android:name=".DoctorListActivity" />
         <activity android:name=".DashboardActivity" />
         <activity android:name=".DoctorInfoActivity" />
-        <activity android:name=".SearchDoctorActivity" />
         <activity android:name=".SearchHospitalActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".BloodDonorActivity" />
@@ -46,9 +44,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".HospitalDetailActivity" />
         <activity android:name=".DoctorProfileActivity" />
-        <activity android:name=".HeartSpecialistActivity" />
         <activity android:name=".UserProfileActivity" />
-<!--        <activity android:name=".JoinActivityType" />-->
     </application>
 
 </manifest>

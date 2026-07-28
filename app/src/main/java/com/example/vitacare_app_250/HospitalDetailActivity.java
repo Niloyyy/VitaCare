@@ -1,4 +1,4 @@
- package com.example.vitacare_app_250;
+package com.example.vitacare_app_250;
 
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -28,17 +28,14 @@ public class HospitalDetailActivity extends AppCompatActivity {
         // Get data from Intent
         String name = getIntent().getStringExtra("name");
         String address = getIntent().getStringExtra("address");
-        String beds = getIntent().getStringExtra("available_beds");
-        String icu = getIntent().getStringExtra("available_icu");
+        String beds = getIntent().getStringExtra("beds");
+        String icu = getIntent().getStringExtra("icu");
 
         // Set data to views
         nameText.setText(name != null ? name : "N/A");
         addressText.setText(address != null ? address : "N/A");
-        String bedsCount = getIntent().getStringExtra("beds");
-        bedCountText.setText("Availabe Beds: " + (bedsCount != null ? bedsCount : "N/A"));
-
-        String icuBeds = getIntent().getStringExtra("icu");
-        icuCountText.setText("Availabe ICU Beds: " + (icuBeds != null ? icuBeds : "N/A"));
+        bedCountText.setText("Available Beds: " + (beds != null ? beds : "N/A"));
+        icuCountText.setText("Available ICU Beds: " + (icu != null ? icu : "N/A"));
 
         // Back button action
         backButton.setOnClickListener(v -> finish());

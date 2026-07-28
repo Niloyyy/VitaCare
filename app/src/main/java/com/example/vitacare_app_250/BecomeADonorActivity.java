@@ -1,6 +1,6 @@
 package com.example.vitacare_app_250;
+
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -32,49 +32,7 @@ public class BecomeADonorActivity extends AppCompatActivity {
 
         submitButton = findViewById(R.id.submitBtn);
 
-//        submitButton.setOnClickListener(v -> {
-//            String name = nameInput.getText().toString().trim();
-//            String number = contactNumber.getText().toString().trim();
-//            String bloodGrp = bloodGroup.getText().toString().trim().toUpperCase();
-//
-//            List<String> validBloodGroups = Arrays.asList("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-");
-//
-//            if (!validBloodGroups.contains(bloodGrp)) {
-//                Toast.makeText(this, "Invalid blood group! Please enter a valid one.", Toast.LENGTH_SHORT).show();
-//                return;
-//            }
-//
-//            //BloodDonor donor = new BloodDonor(name, number, bloodGrp);
-//            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("blood_donors");
-//            //ref.push().setValue(donor).addOnSuccessListener(aVoid -> Toast.makeText(this, "Donor Added!", Toast.LENGTH_SHORT).show()).addOnFailureListener(e -> Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
-//
-//            ref.orderByChild("number").equalTo(number).get().addOnCompleteListener(task -> {
-//                if (task.isSuccessful()) {
-//                    boolean alreadyExists = false;
-//                    for (DataSnapshot snapshot : task.getResult().getChildren()) {
-//                        String dbName = snapshot.child("name").getValue(String.class);
-//                        String dbGroup = snapshot.child("bloodGrp").getValue(String.class);
-//                        if (name.equalsIgnoreCase(dbName) && bloodGrp.equalsIgnoreCase(dbGroup)) {
-//                            alreadyExists = true;
-//                            break;
-//                        }
-//                    }
-//
-//                    if (alreadyExists) {
-//                        Toast.makeText(this, "Donor already exists!", Toast.LENGTH_LONG).show();
-//                    } else {
-//                        BloodDonor donor = new BloodDonor(name, number, bloodGrp);
-//                        ref.push().setValue(donor)
-//                                .addOnSuccessListener(aVoid -> Toast.makeText(this, "Donor Added!", Toast.LENGTH_LONG).show())
-//                                .addOnFailureListener(e -> Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
-//                    }
-//                } else {
-//                    Toast.makeText(this, "Database error!", Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//        });
-
-        // if same credentials are submitted multiple time then then it'll not add the donor info to RT DB
+        // Setup blood group dropdown
         String[] bloodGroups = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.activity_blood_group_dropdown_item, bloodGroups);
         ((AutoCompleteTextView) bloodGroup).setAdapter(adapter);
@@ -126,10 +84,7 @@ public class BecomeADonorActivity extends AppCompatActivity {
             });
         });
 
-        findViewById(R.id.backButton).setOnClickListener(v -> {
-            Log.d("BackButton", "Back button clicked");
-            finish();
-        });
+        findViewById(R.id.backButton).setOnClickListener(v -> finish());
 
     }
 }

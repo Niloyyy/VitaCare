@@ -1,7 +1,6 @@
 package com.example.vitacare_app_250;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,12 +46,11 @@ public class DoctorListActivity extends AppCompatActivity {
         specialty = specialty.toLowerCase();
 
         docsRef = FirebaseDatabase.getInstance().getReference("docs").child(specialty);
-        loadDoctors();
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewDoctors);
         int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.recycler_item_spacing);
         recyclerView.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
 
+        loadDoctors();
     }
 
     private void loadDoctors() {

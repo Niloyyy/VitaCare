@@ -26,6 +26,11 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -34,27 +39,19 @@ android {
 
 dependencies {
 
-    //import billing of material for firebase platform
+    // Firebase BOM — manages all Firebase library versions
     implementation(platform("com.google.firebase:firebase-bom:33.16.0"))
-    //dependency for realtime database library
     implementation("com.google.firebase:firebase-database")
+    implementation("com.google.firebase:firebase-auth")
 
-    implementation ("com.google.firebase:firebase-auth")
-    implementation ("com.google.firebase:firebase-firestore")
-
+    // Testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 
+    // AndroidX
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.activity:activity:1.10.1")
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-
-    implementation("com.google.firebase:firebase-auth:23.2.1")
-
-    implementation("androidx.credentials:credentials:1.5.0")
-    implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
-    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
 }
-//apply(plugin = "com.google.gms.google-services")

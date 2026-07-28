@@ -3,15 +3,3 @@ plugins {
     id("com.android.application") version "8.11.1" apply false
     id("com.google.gms.google-services") version "4.4.2" apply false
 }
-
-buildscript {
-    repositories {
-        // Make e that you have the following two repositories
-        google()  // Google's Maven repository
-        mavenCentral()  // Maven Central repository
-    }
-
-    dependencies {
-        classpath ("com.google.gms:google-services:4.4.3")
-    }
-}
