@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
                                 FirebaseDatabase.getInstance().getReference("users").child(uid).child("role")
                                     .get().addOnCompleteListener(roleTask -> {
                                         add.setEnabled(true);
-                                        if (roleTask.isSuccessful() && roleTask.getResult().exists()) {
-                                            String role = roleTask.getResult().getValue(String.class);
+                                        if (roleTask.isSuccessful()) {
+                                            String role = roleTask.getResult().exists() ? roleTask.getResult().getValue(String.class) : "patient";
                                             if ("patient".equals(role)) {
                                                 mAuth.getCurrentUser().getIdToken(true).addOnSuccessListener(result -> {
                                                     String token = result.getToken();

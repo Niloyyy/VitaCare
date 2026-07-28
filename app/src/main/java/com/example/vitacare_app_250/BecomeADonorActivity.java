@@ -18,7 +18,7 @@ import java.util.List;
 
 public class BecomeADonorActivity extends AppCompatActivity {
 
-    private EditText nameInput, contactNumber, bloodGroup;
+    private EditText nameInput, contactNumber, bloodGroup, locationInput;
     private Button submitButton;
 
     @Override
@@ -29,6 +29,7 @@ public class BecomeADonorActivity extends AppCompatActivity {
         nameInput = findViewById(R.id.Name);
         contactNumber = findViewById(R.id.Phone);
         bloodGroup = findViewById(R.id.BloodGrp);
+        locationInput = findViewById(R.id.Location);
 
         submitButton = findViewById(R.id.submitBtn);
 
@@ -39,7 +40,7 @@ public class BecomeADonorActivity extends AppCompatActivity {
         bloodGroup.setOnClickListener(v -> ((AutoCompleteTextView) bloodGroup).showDropDown());
 
         submitButton.setOnClickListener(v -> {
-            if (ValidationUtils.isEmpty(nameInput) || ValidationUtils.isEmpty(contactNumber) || ValidationUtils.isEmpty(bloodGroup)) {
+            if (ValidationUtils.isEmpty(nameInput) || ValidationUtils.isEmpty(contactNumber) || ValidationUtils.isEmpty(bloodGroup) || ValidationUtils.isEmpty(locationInput)) {
                 Toast.makeText(this, "❌ Please fill out all fields!", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -47,6 +48,7 @@ public class BecomeADonorActivity extends AppCompatActivity {
             String name = nameInput.getText().toString().trim();
             String number = contactNumber.getText().toString().trim();
             String bloodGrp = bloodGroup.getText().toString().trim().toUpperCase();
+            String location = locationInput.getText().toString().trim();
 
             List<String> validBloodGroups = Arrays.asList("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-");
 
@@ -86,10 +88,11 @@ public class BecomeADonorActivity extends AppCompatActivity {
                         submitButton.setEnabled(true);
                         Toast.makeText(this, "❗Donor already exists!", Toast.LENGTH_LONG).show();
                     } else {
-                        BloodDonor donor = new BloodDonor(name, number, bloodGrp);
+                        BloodDonor donor = new BloodDonor(name, number, bloodGrp, location);
                         ref.push().setValue(donor).addOnSuccessListener(aVoid -> {
                             submitButton.setEnabled(true);
                             Toast.makeText(this, "Donor Added!", Toast.LENGTH_LONG).show();
+                            finish();
                         }).addOnFailureListener(e -> {
                             submitButton.setEnabled(true);
                             Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();

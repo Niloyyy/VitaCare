@@ -60,8 +60,8 @@ public class DoctorLogin extends AppCompatActivity {
                         FirebaseDatabase.getInstance().getReference("users").child(user.getUid()).child("role")
                             .get().addOnCompleteListener(roleTask -> {
                                 add.setEnabled(true);
-                                if (roleTask.isSuccessful() && roleTask.getResult().exists()) {
-                                    String role = roleTask.getResult().getValue(String.class);
+                                if (roleTask.isSuccessful()) {
+                                    String role = roleTask.getResult().exists() ? roleTask.getResult().getValue(String.class) : "patient";
                                     if ("doctor".equals(role)) {
                                         user.getIdToken(true).addOnSuccessListener(result -> {
                                             String token = result.getToken();
