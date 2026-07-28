@@ -12,6 +12,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,30 +46,56 @@ public class MainActivity extends AppCompatActivity {
                 String emailInput = phn.getText().toString().trim();
                 String passInput = pass.getText().toString().trim();
 
-                if (emailInput.isEmpty() || passInput.isEmpty()) {
+                if (ValidationUtils.isEmpty(phn) || ValidationUtils.isEmpty(pass)) {
                     Toast.makeText(MainActivity.this, "Fill in all credentials", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                
+                if (!ValidationUtils.isValidEmail(emailInput)) {
+                    phn.setError("Please enter a valid email address");
+                    phn.requestFocus();
+                    return;
+                }
+
+                add.setEnabled(false);
 
                 mAuth.signInWithEmailAndPassword(emailInput, passInput)
                         .addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                mAuth.getCurrentUser().getIdToken(true).addOnSuccessListener(result -> {
-                                    String token = result.getToken();
+                            if (task.isSuccessful() && mAuth.getCurrentUser() != null) {
+                                String uid = mAuth.getCurrentUser().getUid();
+                                FirebaseDatabase.getInstance().getReference("users").child(uid).child("role")
+                                    .get().addOnCompleteListener(roleTask -> {
+                                        add.setEnabled(true);
+                                        if (roleTask.isSuccessful() && roleTask.getResult().exists()) {
+                                            String role = roleTask.getResult().getValue(String.class);
+                                            if ("patient".equals(role)) {
+                                                mAuth.getCurrentUser().getIdToken(true).addOnSuccessListener(result -> {
+                                                    String token = result.getToken();
 
-                                    // Save session info
-                                    SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-                                    SharedPreferences.Editor editor = prefs.edit();
-                                    editor.putString(JWT_KEY, token);
-                                    editor.putString(USER_TYPE_KEY, "patient");  // Mark user as patient
-                                    editor.apply();
+                                                    // Save session info
+                                                    SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                                                    SharedPreferences.Editor editor = prefs.edit();
+                                                    editor.putString(JWT_KEY, token);
+                                                    editor.putString(USER_TYPE_KEY, "patient");  // Mark user as patient
+                                                    editor.apply();
 
-                                    // Navigate to patient dashboard
-                                    Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                });
+                                                    // Navigate to patient dashboard
+                                                    Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                                                    startActivity(intent);
+                                                    finish();
+                                                });
+                                            } else {
+                                                mAuth.signOut();
+                                                Toast.makeText(MainActivity.this, "This account is registered as a Doctor. Please use Doctor Login.", Toast.LENGTH_LONG).show();
+                                            }
+                                        } else {
+                                            mAuth.signOut();
+                                            Toast.makeText(MainActivity.this, "Error checking account role. Please try again.", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                             } else {
+                                add.setEnabled(true);
                                 Toast.makeText(MainActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -81,3 +108,4 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
+

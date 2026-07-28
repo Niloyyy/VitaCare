@@ -9,10 +9,15 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DoctorSignUp extends AppCompatActivity {
 
-    private EditText email , pass , conPass;
+    private EditText email, pass, conPass;
     private Button signupButton;
     private FirebaseAuth mAuth;
 
@@ -29,27 +34,58 @@ public class DoctorSignUp extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        signupButton.setOnClickListener(v ->{
-            String inputEmail = email.getText().toString();
+        signupButton.setOnClickListener(v -> {
+            String inputEmail = email.getText().toString().trim();
             String inputPass = pass.getText().toString();
             String inputConPass = conPass.getText().toString();
 
-            if (inputEmail.isEmpty() || inputPass.isEmpty() || inputConPass.isEmpty()) {
+            if (ValidationUtils.isEmpty(email) || ValidationUtils.isEmpty(pass) || ValidationUtils.isEmpty(conPass)) {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                return;
             }
-            else if (!inputPass.equals(inputConPass)) {
-                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+            
+            if (!ValidationUtils.isValidEmail(inputEmail)) {
+                email.setError("Please enter a valid email address");
+                email.requestFocus();
+                return;
             }
-            else{
-                mAuth.createUserWithEmailAndPassword(inputEmail , inputPass).addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show();
-                        finish(); // Go to the login page
-                    } else {
-                        Toast.makeText(this, "Signup failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+            
+            if (!ValidationUtils.isValidPassword(inputPass)) {
+                pass.setError("Password must be at least 8 characters long, with 1 number and 1 special character");
+                pass.requestFocus();
+                return;
             }
+            
+            if (!inputPass.equals(inputConPass)) {
+                conPass.setError("Passwords do not match");
+                conPass.requestFocus();
+                return;
+            }
+
+            signupButton.setEnabled(false);
+
+            mAuth.createUserWithEmailAndPassword(inputEmail, inputPass).addOnCompleteListener(task -> {
+                signupButton.setEnabled(true);
+                if (task.isSuccessful() && mAuth.getCurrentUser() != null) {
+                    String uid = mAuth.getCurrentUser().getUid();
+                    DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
+                    
+                    Map<String, Object> userData = new HashMap<>();
+                    userData.put("email", inputEmail);
+                    userData.put("role", "doctor");
+                    
+                    userRef.setValue(userData).addOnCompleteListener(dbTask -> {
+                        if (dbTask.isSuccessful()) {
+                            Toast.makeText(this, "Doctor account created successfully", Toast.LENGTH_SHORT).show();
+                            finish(); // Go to the login page
+                        } else {
+                            Toast.makeText(this, "Failed to save user role data", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else {
+                    Toast.makeText(this, "Signup failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
         });
 
         findViewById(R.id.backButton).setOnClickListener(v -> {

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class DoctorLogin extends AppCompatActivity {
 
@@ -39,31 +40,55 @@ public class DoctorLogin extends AppCompatActivity {
             String emailInput = email.getText().toString().trim();
             String passInput = pass.getText().toString().trim();
 
-            if (emailInput.isEmpty() || passInput.isEmpty()) {
+            if (ValidationUtils.isEmpty(email) || ValidationUtils.isEmpty(pass)) {
                 Toast.makeText(this, "Fill all credentials", Toast.LENGTH_SHORT).show();
                 return;
             }
+            
+            if (!ValidationUtils.isValidEmail(emailInput)) {
+                email.setError("Please enter a valid email address");
+                email.requestFocus();
+                return;
+            }
+
+            add.setEnabled(false);
 
             mAuth.signInWithEmailAndPassword(emailInput, passInput).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     FirebaseUser user = mAuth.getCurrentUser();
                     if (user != null) {
-                        user.getIdToken(true).addOnSuccessListener(result -> {
-                            String token = result.getToken();
+                        FirebaseDatabase.getInstance().getReference("users").child(user.getUid()).child("role")
+                            .get().addOnCompleteListener(roleTask -> {
+                                add.setEnabled(true);
+                                if (roleTask.isSuccessful() && roleTask.getResult().exists()) {
+                                    String role = roleTask.getResult().getValue(String.class);
+                                    if ("doctor".equals(role)) {
+                                        user.getIdToken(true).addOnSuccessListener(result -> {
+                                            String token = result.getToken();
 
-                            // Save JWT and user type
-                            SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-                            prefs.edit()
-                                    .putString(JWT_KEY, token)
-                                    .putString(USER_TYPE_KEY, "doctor")
-                                    .apply();
+                                            // Save JWT and user type
+                                            SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                                            prefs.edit()
+                                                    .putString(JWT_KEY, token)
+                                                    .putString(USER_TYPE_KEY, "doctor")
+                                                    .apply();
 
-                            Toast.makeText(this, "Doctor login successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(this, DoctorDashboard.class));
-                            finish();
-                        });
+                                            Toast.makeText(this, "Doctor login successful", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(this, DoctorDashboard.class));
+                                            finish();
+                                        });
+                                    } else {
+                                        mAuth.signOut();
+                                        Toast.makeText(DoctorLogin.this, "This account is registered as a Patient. Please use Patient Login.", Toast.LENGTH_LONG).show();
+                                    }
+                                } else {
+                                    mAuth.signOut();
+                                    Toast.makeText(DoctorLogin.this, "Error checking account role. Please try again.", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                     }
                 } else {
+                    add.setEnabled(true);
                     Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -74,3 +99,4 @@ public class DoctorLogin extends AppCompatActivity {
         });
     }
 }
+

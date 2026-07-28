@@ -36,14 +36,22 @@ public class DoctorVerification extends AppCompatActivity {
         doctorsRef = FirebaseDatabase.getInstance().getReference("doctors");
 
         verifyBtn.setOnClickListener(v -> {
-            String nameInput = name.getText().toString().trim();
-            String emailInput = email.getText().toString().trim();
-            String licenseInput = license.getText().toString().trim();
-
-            if (nameInput.isEmpty() || emailInput.isEmpty() || licenseInput.isEmpty()) {
+            if (ValidationUtils.isEmpty(name) || ValidationUtils.isEmpty(email) || ValidationUtils.isEmpty(license)) {
                 Toast.makeText(this, "Fill up every credential", Toast.LENGTH_SHORT).show();
                 return;
             }
+
+            String nameInput = name.getText().toString().trim();
+            String emailInput = email.getText().toString().trim();
+            String licenseInput = license.getText().toString().trim();
+            
+            if (!ValidationUtils.isValidEmail(emailInput)) {
+                email.setError("Please enter a valid email address");
+                email.requestFocus();
+                return;
+            }
+            
+            verifyBtn.setEnabled(false);
 
             verifyDoctor(nameInput, emailInput, licenseInput);
         });
@@ -53,6 +61,7 @@ public class DoctorVerification extends AppCompatActivity {
         doctorsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                verifyBtn.setEnabled(true);
                 boolean found = false;
 
                 for (DataSnapshot doctorSnap : snapshot.getChildren()) {
@@ -80,6 +89,7 @@ public class DoctorVerification extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                verifyBtn.setEnabled(true);
                 Toast.makeText(DoctorVerification.this, "Error: " + error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

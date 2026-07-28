@@ -39,6 +39,11 @@ public class BecomeADonorActivity extends AppCompatActivity {
         bloodGroup.setOnClickListener(v -> ((AutoCompleteTextView) bloodGroup).showDropDown());
 
         submitButton.setOnClickListener(v -> {
+            if (ValidationUtils.isEmpty(nameInput) || ValidationUtils.isEmpty(contactNumber) || ValidationUtils.isEmpty(bloodGroup)) {
+                Toast.makeText(this, "❌ Please fill out all fields!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             String name = nameInput.getText().toString().trim();
             String number = contactNumber.getText().toString().trim();
             String bloodGrp = bloodGroup.getText().toString().trim().toUpperCase();
@@ -46,15 +51,18 @@ public class BecomeADonorActivity extends AppCompatActivity {
             List<String> validBloodGroups = Arrays.asList("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-");
 
             if (!validBloodGroups.contains(bloodGrp)) {
-                Toast.makeText(this, "❌ Invalid blood group!", Toast.LENGTH_SHORT).show();
+                bloodGroup.setError("Invalid blood group!");
+                bloodGroup.requestFocus();
                 return;
             }
 
-            if (number.length() != 11 || !number.matches("\\d{11}")) {
-                Toast.makeText(this, "❌ Phone number must be exactly 11 digits!", Toast.LENGTH_SHORT).show();
+            if (!ValidationUtils.isValidPhone(number)) {
+                contactNumber.setError("Please enter a valid phone number!");
+                contactNumber.requestFocus();
                 return;
             }
 
+            submitButton.setEnabled(false);
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("blood_donors");
 
             Query query = ref.orderByChild("Phone").equalTo(number);
@@ -75,11 +83,20 @@ public class BecomeADonorActivity extends AppCompatActivity {
                     }
 
                     if (alreadyExists) {
+                        submitButton.setEnabled(true);
                         Toast.makeText(this, "❗Donor already exists!", Toast.LENGTH_LONG).show();
                     } else {
                         BloodDonor donor = new BloodDonor(name, number, bloodGrp);
-                        ref.push().setValue(donor).addOnSuccessListener(aVoid -> Toast.makeText(this, "Donor Added!", Toast.LENGTH_LONG).show()).addOnFailureListener(e -> Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                        ref.push().setValue(donor).addOnSuccessListener(aVoid -> {
+                            submitButton.setEnabled(true);
+                            Toast.makeText(this, "Donor Added!", Toast.LENGTH_LONG).show();
+                        }).addOnFailureListener(e -> {
+                            submitButton.setEnabled(true);
+                            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        });
                     }
+                } else {
+                    submitButton.setEnabled(true);
                 }
             });
         });
