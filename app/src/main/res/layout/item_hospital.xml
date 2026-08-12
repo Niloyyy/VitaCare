@@ -1,37 +1,125 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:padding="10dp"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:background="?android:attr/selectableItemBackground">
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    A hospital row. Bed and ICU counts are the reason anyone opens this screen,
+    so they are presented as two labelled metrics rather than the old
+    "Beds: 12   ICU: 3" run-on line in 14sp blue text.
+-->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card"
+    style="@style/Widget.VitaCare.Card.Interactive"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    <TextView android:id="@+id/tvName"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:text="Hospital Name"
-        android:textColor="#091BE0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView android:id="@+id/tvAddress"
-        android:text="Address"
-        android:textColor="#091BE0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <LinearLayout android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="@dimen/space_lg">
 
-        <TextView android:id="@+id/tvBeds"
-            android:text="Available Beds: 0"
-            android:layout_marginEnd="16dp"
-            android:textColor="#091BE0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
-        <TextView android:id="@+id/tvIcu"
-            android:text="Available ICU: 0"
-            android:textColor="#091BE0"
+            <ImageView
+                android:layout_width="@dimen/icon_tile"
+                android:layout_height="@dimen/icon_tile"
+                android:background="@drawable/bg_icon_tile"
+                android:backgroundTint="?attr/colorSecondaryContainer"
+                android:importantForAccessibility="no"
+                android:padding="@dimen/space_md"
+                android:src="@drawable/ic_hospital_24"
+                app:tint="?attr/colorOnSecondaryContainer" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_lg"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:textColor="?attr/colorOnSurface"
+                    tools:text="Dhaka Medical College Hospital" />
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_xxs"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    tools:text="Secretariat Road, Dhaka 1000" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/status_chip"
+            style="@style/Widget.VitaCare.Chip.Tag"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md"
+            tools:text="@string/hospital_status_available" />
+
+        <LinearLayout
+            android:id="@+id/metrics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/beds_group"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/beds_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.VitaCare.Metric"
+                    android:textColor="?attr/colorOnSurface"
+                    tools:text="42" />
+
+                <TextView
+                    style="@style/Widget.VitaCare.FieldLabel"
+                    android:text="@string/hospital_beds_label" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/icu_group"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/icu_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.VitaCare.Metric"
+                    android:textColor="?attr/colorOnSurface"
+                    tools:text="3" />
+
+                <TextView
+                    style="@style/Widget.VitaCare.FieldLabel"
+                    android:text="@string/hospital_icu_label" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

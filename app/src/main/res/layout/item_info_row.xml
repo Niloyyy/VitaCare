@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    A labelled read-only value with a leading icon. Reused across the profile,
+    doctor detail and hospital detail screens so that every "field: value" pair
+    in the app has the same shape and spacing.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/info_row"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:minHeight="@dimen/touch_target_min"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/space_md"
+    android:paddingBottom="@dimen/space_md">
+
+    <ImageView
+        android:id="@+id/info_icon"
+        android:layout_width="@dimen/icon_md"
+        android:layout_height="@dimen/icon_md"
+        android:layout_marginTop="@dimen/space_xxs"
+        android:importantForAccessibility="no"
+        tools:src="@drawable/ic_email_24" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_lg"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/info_label"
+            style="@style/Widget.VitaCare.FieldLabel"
+            tools:text="@string/field_email" />
+
+        <TextView
+            android:id="@+id/info_value"
+            style="@style/Widget.VitaCare.FieldValue"
+            tools:text="ayesha@example.com" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/info_action"
+        style="@style/Widget.VitaCare.Button.IconOnly"
+        android:layout_width="@dimen/touch_target_min"
+        android:layout_height="@dimen/touch_target_min"
+        android:layout_gravity="center_vertical"
+        android:visibility="gone"
+        app:icon="@drawable/ic_phone_24"
+        app:iconTint="?attr/colorPrimary"
+        tools:visibility="visible" />
+</LinearLayout>

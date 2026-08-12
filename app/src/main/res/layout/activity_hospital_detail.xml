@@ -1,142 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
-    android:padding="24dp">
+    android:layout_height="match_parent">
 
-    <!-- Back Button -->
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="Back"
-        android:src="@android:drawable/ic_media_previous"
-        android:scaleType="fitCenter"
-        app:tint="#FFFFFF"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"/>
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        style="@style/Widget.VitaCare.AppBarLayout">
 
-    <!-- Scrollable Content -->
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/backButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:fillViewport="true">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/Widget.VitaCare.Toolbar" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
+            style="@style/Widget.VitaCare.ContentColumn"
+            android:paddingTop="@dimen/space_lg">
 
-            <!-- Hospital Image -->
-            <ImageView
-                android:id="@+id/hospitalImage"
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/hero"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/dummy_hospital"
+                android:layout_height="@dimen/hero_image_height"
                 android:scaleType="centerCrop"
-                android:contentDescription="Hospital Image"
-                android:layout_marginBottom="16dp" />
-
-            <!-- Hospital Name -->
-            <TextView
-                android:id="@+id/hospitalName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hospital Name"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:textColor="#430178"
-                android:layout_marginBottom="16dp" />
-
-            <!-- Address -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Find Us:"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:textColor="#430178"
-                android:layout_marginTop="8dp" />
+                android:src="@drawable/dummy_hospital"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.VitaCare.Large"
+                tools:ignore="ContentDescription" />
 
             <TextView
-                android:id="@+id/hospitalAddress"
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_lg"
+                android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                android:textColor="?attr/colorOnSurface"
+                tools:text="Dhaka Medical College Hospital" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/status_chip"
+                style="@style/Widget.VitaCare.Chip.Tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Address goes here"
-                android:textSize="16sp"
-                android:textColor="#430178"
-                android:layout_marginBottom="12dp" />
+                android:layout_marginTop="@dimen/space_sm"
+                tools:text="@string/hospital_status_available" />
 
-            <!-- Beds -->
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- The two counts, given the prominence they are looked up for. -->
+            <LinearLayout
+                android:id="@+id/metrics"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Beds:"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:textColor="#430178"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="@dimen/space_lg"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/hospitalCapacity"
-                android:layout_width="wrap_content"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/beds_card"
+                    style="@style/Widget.VitaCare.Card"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/space_sm"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_md"
+                            android:layout_height="@dimen/icon_md"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_bed_24"
+                            app:tint="?attr/colorOnSurfaceVariant" />
+
+                        <TextView
+                            android:id="@+id/beds_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_sm"
+                            android:textAppearance="@style/TextAppearance.VitaCare.Metric"
+                            android:textColor="?attr/colorOnSurface"
+                            tools:text="42" />
+
+                        <TextView
+                            style="@style/Widget.VitaCare.FieldLabel"
+                            android:text="@string/hospital_beds_label" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/icu_card"
+                    style="@style/Widget.VitaCare.Card"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/space_sm"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/icon_md"
+                            android:layout_height="@dimen/icon_md"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_hospital_24"
+                            app:tint="?attr/colorOnSurfaceVariant" />
+
+                        <TextView
+                            android:id="@+id/icu_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_sm"
+                            android:textAppearance="@style/TextAppearance.VitaCare.Metric"
+                            android:textColor="?attr/colorOnSurface"
+                            tools:text="3" />
+
+                        <TextView
+                            style="@style/Widget.VitaCare.FieldLabel"
+                            android:text="@string/hospital_icu_label" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.VitaCare.Card.Info"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="100"
-                android:textSize="16sp"
-                android:textColor="#430178"
-                android:layout_marginBottom="12dp" />
+                android:layout_marginTop="@dimen/space_lg">
 
-            <!-- ICU Beds -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ICU Beds:"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:textColor="#430178"
-                android:layout_marginTop="8dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="?android:attr/listDivider"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
 
-            <TextView
-                android:id="@+id/hospitalICU"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="20"
-                android:textSize="16sp"
-                android:textColor="#430178"
-                android:layout_marginBottom="16dp" />
+                    <include
+                        android:id="@+id/row_address"
+                        layout="@layout/item_info_row" />
 
-            <!-- Contact Us -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Contact Us:"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:textColor="#430178"
-                android:layout_marginTop="8dp" />
-
-            <TextView
-                android:id="@+id/hospitalContact"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+8801XXXXXXXXX"
-                android:textSize="16sp"
-                android:textColor="#430178"
-                android:layout_marginBottom="24dp" />
-
+                    <include
+                        android:id="@+id/row_contact"
+                        layout="@layout/item_info_row" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
-    </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

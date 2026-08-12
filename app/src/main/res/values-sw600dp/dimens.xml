@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Tablet / large-screen overrides. Wider page gutters and a larger logo and hero image, so
+    content does not stretch thin across the extra width.
+-->
+<resources>
+    <dimen name="screen_gutter">32dp</dimen>
+    <dimen name="logo_size">128dp</dimen>
+    <dimen name="hero_image_height">280dp</dimen>
+</resources>

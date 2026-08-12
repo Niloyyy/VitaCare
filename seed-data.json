@@ -1,0 +1,146 @@
+{
+  "hospitals": {
+    "h_dmch": {
+      "name": "Dhaka Medical College Hospital",
+      "address": "Secretariat Road, Shahbagh, Dhaka 1000",
+      "contact": "+8801711000001",
+      "available_beds": "42",
+      "available_icu": "6"
+    },
+    "h_square": {
+      "name": "Square Hospitals Ltd.",
+      "address": "18/F Bir Uttam Qazi Nuruzzaman Sarak, West Panthapath, Dhaka 1205",
+      "contact": "+8801711000002",
+      "available_beds": "17",
+      "available_icu": "3"
+    },
+    "h_evercare": {
+      "name": "Evercare Hospital Dhaka",
+      "address": "Plot 81, Block E, Bashundhara R/A, Dhaka 1229",
+      "contact": "+8801711000003",
+      "available_beds": "3",
+      "available_icu": "1"
+    },
+    "h_chittagong": {
+      "name": "Chittagong Medical College Hospital",
+      "address": "K.B. Fazlul Kader Road, Panchlaish, Chattogram 4203",
+      "contact": "+8801711000004",
+      "available_beds": "0",
+      "available_icu": "0"
+    },
+    "h_rajshahi": {
+      "name": "Rajshahi Medical College Hospital",
+      "address": "Laxmipur, Rajshahi 6000",
+      "contact": "+8801711000005"
+    },
+    "h_sylhet": {
+      "name": "Sylhet MAG Osmani Medical College Hospital",
+      "address": "Medical College Road, Kajolshah, Sylhet 3100",
+      "contact": "+8801711000006",
+      "available_beds": "N/A",
+      "available_icu": "4"
+    }
+  },
+
+  "docs": {
+    "cardiology": {
+      "seed_doc_cardio_1": {
+        "name": "Ayesha Rahman",
+        "contact": "+8801712000001",
+        "degree": "MBBS, FCPS (Cardiology), FACC",
+        "chamber": "Square Hospitals, Level 6, Room 612, Panthapath, Dhaka",
+        "specialist": "cardiology",
+        "speciality": "Interventional cardiology and angioplasty"
+      },
+      "seed_doc_cardio_2": {
+        "name": "Imran Chowdhury",
+        "contact": "+8801712000002",
+        "degree": "MBBS, MD (Cardiology)",
+        "chamber": "Evercare Hospital, Block C, Bashundhara R/A, Dhaka",
+        "specialist": "cardiology",
+        "speciality": "Paediatric heart surgery"
+      }
+    },
+    "orthopedics": {
+      "seed_doc_ortho_1": {
+        "name": "Nusrat Jahan",
+        "contact": "+8801712000003",
+        "degree": "MBBS, MS (Orthopaedics)",
+        "chamber": "Dhaka Medical College Hospital, OPD Block 2, Shahbagh, Dhaka",
+        "specialist": "orthopedics",
+        "speciality": "Joint replacement and sports injury"
+      }
+    },
+    "neurology": {
+      "seed_doc_neuro_1": {
+        "name": "Tanvir Hossain",
+        "contact": "+8801712000004",
+        "degree": "MBBS, FCPS (Neurology)",
+        "chamber": "Ibn Sina Diagnostic Centre, Dhanmondi, Dhaka",
+        "specialist": "neurology",
+        "speciality": "Stroke and epilepsy management"
+      },
+      "seed_doc_neuro_2": {
+        "name": "Farhana Akter",
+        "contact": "+8801712000005",
+        "specialist": "neurology",
+        "speciality": "Movement disorders"
+      }
+    },
+    "nephrology": {
+      "seed_doc_nephro_1": {
+        "name": "Kamrul Islam",
+        "contact": "+8801712000006",
+        "degree": "MBBS, MD (Nephrology)",
+        "chamber": "Kidney Foundation Hospital, Mirpur, Dhaka",
+        "specialist": "nephrology",
+        "speciality": "Dialysis and transplant care"
+      }
+    }
+  },
+
+  "doctors": {
+    "reg_1": {
+      "name": "Ayesha Rahman",
+      "email": "ayesha.rahman@example.com",
+      "license": "BMDC001"
+    },
+    "reg_2": {
+      "name": "Imran Chowdhury",
+      "email": "imran.chowdhury@example.com",
+      "license": "BMDC002"
+    },
+    "reg_3": {
+      "name": "Nusrat Jahan",
+      "email": "nusrat.jahan@example.com",
+      "license": "BMDC003"
+    }
+  },
+
+  "blood_donors": {
+    "seed_donor_1": {
+      "Name": "Sabbir Ahmed",
+      "Phone": "01712345678",
+      "BloodGroup": "O+",
+      "Location": "Dhanmondi, Dhaka"
+    },
+    "seed_donor_2": {
+      "Name": "Mitu Barua",
+      "Phone": "01812345678",
+      "BloodGroup": "AB-",
+      "Location": "Agrabad, Chattogram"
+    },
+    "seed_donor_3": {
+      "Name": "Rifat Karim",
+      "Phone": "01912345678",
+      "BloodGroup": "B+",
+      "Location": "Uttara, Dhaka"
+    },
+    "seed_donor_4": {
+      "Name": "Shirin Akhter",
+      "Phone": "01612345678",
+      "BloodGroup": "O-",
+      "Location": "Zindabazar, Sylhet"
+    }
+  }
+}

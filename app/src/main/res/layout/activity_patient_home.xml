@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Patient dashboard.
+
+    The previous version stacked four differently-coloured buttons inside a
+    mint panel, with the profile control as an unlabelled 56dp avatar pinned by
+    percentage bias and a separate TextView reading "  Profile" positioned to
+    sit under it. Here the profile and sign-out actions live in the app bar
+    where they belong, and the four services are equal-weight cards that state
+    what each one does.
+-->
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        style="@style/Widget.VitaCare.AppBarLayout">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/Widget.VitaCare.Toolbar"
+            app:menu="@menu/menu_patient_home"
+            app:navigationIcon="@null"
+            app:title="@string/patient_home_title" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            style="@style/Widget.VitaCare.ContentColumn"
+            android:paddingTop="@dimen/space_sm">
+
+            <TextView
+                android:id="@+id/greeting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                android:textColor="?attr/colorOnSurface"
+                tools:text="Hello, Ayesha" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_xs"
+                android:text="@string/patient_home_subtitle"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+            <TextView
+                style="@style/Widget.VitaCare.SectionHeader"
+                android:text="@string/patient_home_services" />
+
+            <include
+                android:id="@+id/action_specialist"
+                layout="@layout/item_feature_card" />
+
+            <include
+                android:id="@+id/action_directory"
+                layout="@layout/item_feature_card" />
+
+            <include
+                android:id="@+id/action_hospitals"
+                layout="@layout/item_feature_card" />
+
+            <include
+                android:id="@+id/action_blood"
+                layout="@layout/item_feature_card" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

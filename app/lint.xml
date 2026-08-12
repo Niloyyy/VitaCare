@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Issue-level lint configuration.
+
+    Deliberately narrow: behavioural settings (abortOnError, checkDependencies)
+    live in build.gradle.kts, and this file carries only per-issue exceptions
+    that come with a reason. Nothing here disables a check globally.
+-->
+<lint>
+
+    <!--
+        Lint notes that the v26 qualifier is redundant at minSdk 26 and suggests
+        merging the folder into mipmap-anydpi. Keeping the qualifier is
+        deliberate: adaptive icons are an API 26 feature, so -v26 is the form
+        that stays correct if minSdk is ever lowered, and it is what the
+        platform documentation and tooling generate. Scoped to the icon folder
+        so genuine obsolete SDK checks elsewhere still surface.
+    -->
+    <issue id="ObsoleteSdkInt">
+        <ignore path="src/main/res/mipmap-anydpi-v26" />
+    </issue>
+
+</lint>

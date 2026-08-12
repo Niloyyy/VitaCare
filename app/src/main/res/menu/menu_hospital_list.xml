@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--
+        Sorting moved off the content area and into the app bar as a single
+        exclusive group. The old screen had two "Sort by X ↓" buttons that only
+        ever sorted descending, could not be undone, and silently lost their
+        ordering the next time the live listener delivered data.
+    -->
+    <item
+        android:id="@+id/action_sort"
+        android:icon="@drawable/ic_sort_24"
+        android:title="@string/hospital_sort_label"
+        app:showAsAction="ifRoom">
+        <menu>
+            <group
+                android:id="@+id/group_sort"
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/sort_name"
+                    android:checked="true"
+                    android:title="@string/hospital_sort_name" />
+                <item
+                    android:id="@+id/sort_beds"
+                    android:title="@string/hospital_sort_beds" />
+                <item
+                    android:id="@+id/sort_icu"
+                    android:title="@string/hospital_sort_icu" />
+            </group>
+        </menu>
+    </item>
+</menu>

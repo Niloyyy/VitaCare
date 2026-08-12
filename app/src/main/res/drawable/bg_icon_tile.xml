@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Rounded tonal square behind a feature or specialty icon. The fill is
+    tinted at the call site with app:backgroundTint so one drawable serves
+    every accent colour.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@android:color/white" />
+    <corners android:radius="14dp" />
+</shape>

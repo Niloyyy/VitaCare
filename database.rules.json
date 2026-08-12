@@ -1,0 +1,107 @@
+// VitaCare Realtime Database security rules.
+//
+// Paste into Firebase console -> Realtime Database -> Rules -> Publish,
+// or deploy with:  firebase deploy --only database
+//
+// Default-deny at the root: any path not named below is unreadable and
+// unwritable, so adding a node later does not silently expose it.
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    // Account records. Each user sees and writes only their own.
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+
+        // Pinned to the two values Role.java understands. Without this a
+        // client could write role:"admin", and the app would then refuse to
+        // sign them in at all - AuthRepository treats an unknown role as an
+        // error rather than guessing.
+        "role": {
+          ".validate": "newData.isString() && (newData.val() === 'patient' || newData.val() === 'doctor')"
+        },
+        "email": {
+          ".validate": "newData.isString() && newData.val().length <= 320"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    },
+
+    // The licence register that DoctorVerificationActivity checks against.
+    //
+    // This read rule permits ONLY a single-record equality query on license.
+    // A plain read of the node, or any broader query, is refused - which is
+    // what stops the whole register being pulled onto a handset, as the
+    // pre-refactor app did.
+    //
+    // CAVEAT, worth reading: verification happens before the doctor has an
+    // account, so this query cannot require auth. Anyone can therefore test a
+    // licence number one guess at a time and, on a hit, read that record's
+    // name and email. Narrow, but real. Closing it properly needs either a
+    // Cloud Function that takes the three fields and returns a boolean, or a
+    // reordered flow where the user registers first and verifies while signed
+    // in. Both are app changes, not rule changes.
+    "doctors": {
+      ".read": "query.orderByChild === 'license' && query.equalTo !== null && query.limitToFirst === 1",
+      ".write": false,
+      ".indexOn": ["license"]
+    },
+
+    // Published practice profiles, keyed docs/<specialty>/<uid>.
+    // Readable by any signed-in user; writable only by the doctor it belongs
+    // to, and only if their account role is actually "doctor".
+    "docs": {
+      ".read": "auth != null",
+      "$specialty": {
+        "$uid": {
+          ".write": "auth != null && auth.uid === $uid && root.child('users').child(auth.uid).child('role').val() === 'doctor'",
+          ".validate": "newData.hasChildren(['name', 'contact', 'specialist'])",
+
+          "name":       { ".validate": "newData.isString() && newData.val().length > 1 && newData.val().length <= 100" },
+          "contact":    { ".validate": "newData.isString() && newData.val().length <= 20" },
+          "degree":     { ".validate": "newData.isString() && newData.val().length <= 200" },
+          "chamber":    { ".validate": "newData.isString() && newData.val().length <= 300" },
+          // Must agree with the node it is filed under, so a profile cannot
+          // claim one specialty while living in another.
+          "specialist": { ".validate": "newData.isString() && newData.val() === $specialty" },
+          "speciality": { ".validate": "newData.isString() && newData.val().length <= 200" },
+          "$other":     { ".validate": false }
+        }
+      }
+    },
+
+    // Bed and ICU availability. Read-only to the app; these records are
+    // maintained from the console or an admin tool, never from a handset.
+    "hospitals": {
+      ".read": "auth != null",
+      ".write": false
+    },
+
+    // Volunteer donor register. Append-only: a signed-in user may create a new
+    // record but cannot edit or delete an existing one, so nobody can alter or
+    // remove another person's listing.
+    //
+    // indexOn Phone backs the duplicate check in DonorRepository.register.
+    // Without it the query still works, but Firebase evaluates it over the
+    // whole node client-side, which is slow and defeats the point.
+    "blood_donors": {
+      ".read": "auth != null",
+      ".indexOn": ["Phone"],
+      "$donorId": {
+        ".write": "auth != null && !data.exists() && newData.exists()",
+        ".validate": "newData.hasChildren(['Name', 'Phone', 'BloodGroup'])",
+
+        "Name":       { ".validate": "newData.isString() && newData.val().length > 1 && newData.val().length <= 100" },
+        "Phone":      { ".validate": "newData.isString() && newData.val().length >= 10 && newData.val().length <= 20" },
+        "BloodGroup": { ".validate": "newData.isString() && newData.val().matches(/^(A|B|AB|O)[+-]$/)" },
+        "Location":   { ".validate": "newData.isString() && newData.val().length <= 120" },
+        "$other":     { ".validate": false }
+      }
+    }
+  }
+}

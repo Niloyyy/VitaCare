@@ -1,11 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Every user-facing string in the app. Nothing is inlined in a layout or an
+    activity, so the whole product copy can be reviewed here and localised
+    without touching code.
+-->
 <resources>
-    <string name="app_name">VitaCare_app_250</string>
 
-    <string-array name="specialist_options">
-        <item>Select Specialist</item>
-        <item>Cardiology</item>
-        <item>Neurology</item>
-        <item>Orthopedics</item>
-        <item>Nephrology</item>
-    </string-array>
+    <string name="app_name">VitaCare</string>
+    <string name="app_tagline">Care, connected.</string>
+
+    <!-- ============================== Actions ============================= -->
+    <string name="action_navigate_up">Navigate up</string>
+    <string name="action_retry">Retry</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_save">Save</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_create_account">Create account</string>
+    <string name="action_sign_out">Sign out</string>
+    <string name="action_call">Call</string>
+
+    <!-- ============================== Landing ============================= -->
+    <string name="landing_title">Welcome to VitaCare</string>
+    <string name="landing_subtitle">Find doctors, check hospital availability, and connect with blood donors — all in one place.</string>
+    <string name="landing_choose_role">How would you like to continue?</string>
+    <string name="landing_join_patient">I\'m a patient</string>
+    <string name="landing_join_patient_detail">Browse doctors, hospitals and blood donors</string>
+    <string name="landing_join_doctor">I\'m a doctor</string>
+    <string name="landing_join_doctor_detail">Verify your licence and publish your practice</string>
+    <string name="landing_logo_description">VitaCare logo</string>
+
+    <!-- ========================== Patient sign-in ========================= -->
+    <string name="patient_login_title">Patient sign in</string>
+    <string name="patient_login_heading">Welcome back</string>
+    <string name="patient_login_subheading">Sign in to reach your care network.</string>
+    <string name="patient_signup_prompt">Don\'t have an account yet?</string>
+
+    <string name="patient_signup_title">Create patient account</string>
+    <string name="patient_signup_heading">Create your account</string>
+    <string name="patient_signup_subheading">It takes less than a minute.</string>
+    <string name="patient_login_prompt">Already have an account?</string>
+
+    <!-- =========================== Doctor sign-in ========================= -->
+    <string name="doctor_login_title">Doctor sign in</string>
+    <string name="doctor_login_heading">Welcome back, doctor</string>
+    <string name="doctor_login_subheading">Sign in to manage your practice profile.</string>
+    <string name="doctor_signup_title">Create doctor account</string>
+    <string name="doctor_signup_heading">Set up your account</string>
+    <string name="doctor_signup_subheading">Use the email address on your verified licence.</string>
+
+    <string name="doctor_verify_title">Licence verification</string>
+    <string name="doctor_verify_heading">Verify your licence</string>
+    <string name="doctor_verify_subheading">We check your details against the medical register before you can publish a practice profile.</string>
+    <string name="doctor_verify_action">Verify licence</string>
+    <string name="doctor_verify_success">Licence verified. Continue to sign in.</string>
+    <string name="doctor_verify_failed">We couldn\'t match those details to a registered licence. Check the name, email and licence number and try again.</string>
+
+    <!-- ============================== Fields ============================== -->
+    <string name="field_full_name">Full name</string>
+    <string name="field_email">Email address</string>
+    <string name="field_password">Password</string>
+    <string name="field_confirm_password">Confirm password</string>
+    <string name="field_phone">Contact number</string>
+    <string name="field_licence">Licence number</string>
+    <string name="field_degree">Qualifications</string>
+    <string name="field_specialty">Specialty</string>
+    <string name="field_focus_area">Focus area</string>
+    <string name="field_chamber">Chamber address</string>
+    <string name="field_blood_group">Blood group</string>
+    <string name="field_location">City or area</string>
+
+    <string name="hint_full_name">e.g. Ayesha Rahman</string>
+    <string name="hint_phone">e.g. 01712345678</string>
+    <string name="hint_degree">e.g. MBBS, FCPS (Cardiology)</string>
+    <string name="hint_focus_area">e.g. Interventional heart surgery</string>
+    <string name="hint_chamber">Building, road, area, city</string>
+    <string name="hint_licence">7-character licence number</string>
+
+    <string name="helper_password">At least 8 characters, with a number and a symbol.</string>
+    <string name="helper_focus_area">Shown on your public profile under your specialty.</string>
+
+    <!-- ============================ Validation ============================ -->
+    <string name="error_required">This field is required</string>
+    <string name="error_invalid_email">Enter a valid email address</string>
+    <string name="error_weak_password">Use at least 8 characters, including a number and a symbol</string>
+    <string name="error_password_mismatch">Passwords don\'t match</string>
+    <string name="error_invalid_phone">Enter a valid contact number</string>
+    <string name="error_invalid_blood_group">Choose a blood group from the list</string>
+    <string name="error_invalid_licence">Licence numbers are 7 characters</string>
+    <string name="error_select_specialty">Choose a specialty</string>
+    <string name="error_name_too_short">Enter the full name</string>
+
+    <!-- ========================= Auth result copy ========================= -->
+    <string name="auth_account_created">Account created. Sign in to continue.</string>
+    <string name="auth_invalid_credentials">Email or password is incorrect</string>
+    <string name="auth_email_in_use">An account already exists for this email</string>
+    <string name="auth_weak_password_server">That password was rejected as too weak</string>
+    <string name="auth_too_many_requests">Too many attempts. Wait a moment and try again.</string>
+    <string name="auth_wrong_role_doctor">This account is registered as a doctor. Use doctor sign-in.</string>
+    <string name="auth_wrong_role_patient">This account is registered as a patient. Use patient sign-in.</string>
+    <string name="auth_role_lookup_failed">We couldn\'t confirm your account type. Try again.</string>
+    <string name="auth_session_expired">Your session has ended. Please sign in again.</string>
+    <string name="auth_sign_out_confirm_title">Sign out?</string>
+    <string name="auth_sign_out_confirm_body">You\'ll need to sign in again to reach your care network.</string>
+
+    <!-- ========================== Patient home ============================ -->
+    <string name="patient_home_title">VitaCare</string>
+    <string name="patient_home_greeting">Hello%1$s</string>
+    <string name="patient_home_greeting_generic">Hello</string>
+    <string name="patient_home_subtitle">What do you need today?</string>
+    <string name="patient_home_services">Services</string>
+
+    <string name="feature_doctor_directory">Doctor directory</string>
+    <string name="feature_doctor_directory_detail">Browse every registered doctor</string>
+    <string name="feature_find_specialist">Find a specialist</string>
+    <string name="feature_find_specialist_detail">Search by area of medicine</string>
+    <string name="feature_hospitals">Hospitals</string>
+    <string name="feature_hospitals_detail">Live bed and ICU availability</string>
+    <string name="feature_blood_link">Blood Link</string>
+    <string name="feature_blood_link_detail">Give blood or find a donor</string>
+
+    <!-- ============================= Profile ============================== -->
+    <string name="profile_title">My profile</string>
+    <string name="profile_account_section">Account</string>
+    <string name="profile_avatar_description">Profile picture</string>
+    <string name="profile_not_set">Not set</string>
+    <string name="profile_role_patient">Patient</string>
+
+    <!-- =========================== Doctor home ============================ -->
+    <string name="doctor_home_title">My practice</string>
+    <string name="doctor_home_greeting">Hello, Dr. %1$s</string>
+    <string name="doctor_home_greeting_generic">Hello, doctor</string>
+    <string name="doctor_home_no_profile_title">Your practice isn\'t listed yet</string>
+    <string name="doctor_home_no_profile_body">Publish your practice details so patients searching VitaCare can find and contact you.</string>
+    <string name="doctor_home_publish">Publish my practice</string>
+    <string name="doctor_home_listed_title">You\'re listed in the directory</string>
+    <string name="doctor_home_listed_body">Patients browsing %1$s can see this profile.</string>
+    <string name="doctor_home_edit">Edit practice details</string>
+    <string name="doctor_home_preview">Preview public profile</string>
+
+    <string name="doctor_form_title_create">Publish practice</string>
+    <string name="doctor_form_title_edit">Edit practice</string>
+    <string name="doctor_form_heading">Practice details</string>
+    <string name="doctor_form_subheading">This is what patients see when they find you in the directory.</string>
+    <string name="doctor_form_saved">Practice details saved</string>
+
+    <!-- ============================ Directory ============================= -->
+    <string name="specialty_title">Find a specialist</string>
+    <string name="specialty_heading">Which area of medicine?</string>
+    <string name="specialty_subheading">Pick a specialty to see the doctors practising in it.</string>
+
+    <string name="specialty_cardiology">Cardiology</string>
+    <string name="specialty_cardiology_detail">Heart and circulation</string>
+    <string name="specialty_orthopedics">Orthopaedics</string>
+    <string name="specialty_orthopedics_detail">Bones, joints and muscles</string>
+    <string name="specialty_neurology">Neurology</string>
+    <string name="specialty_neurology_detail">Brain and nervous system</string>
+    <string name="specialty_nephrology">Nephrology</string>
+    <string name="specialty_nephrology_detail">Kidneys and urinary tract</string>
+    <string name="specialty_unspecified">General practice</string>
+
+    <string name="doctor_list_title_all">All doctors</string>
+    <string name="doctor_list_search_hint">Search by name or qualification</string>
+    <plurals name="doctor_list_count">
+        <item quantity="one">%1$d doctor</item>
+        <item quantity="other">%1$d doctors</item>
+    </plurals>
+
+    <string name="doctor_detail_title">Doctor profile</string>
+    <string name="doctor_name_format">Dr. %1$s</string>
+    <string name="doctor_photo_description">Photo of %1$s</string>
+    <string name="doctor_call_description">Call %1$s</string>
+
+    <!-- ============================ Hospitals ============================= -->
+    <string name="hospital_list_title">Hospitals</string>
+    <string name="hospital_search_hint">Search hospitals by name</string>
+    <string name="hospital_sort_label">Sort by</string>
+    <string name="hospital_sort_name">Name</string>
+    <string name="hospital_sort_beds">Beds free</string>
+    <string name="hospital_sort_icu">ICU free</string>
+    <string name="hospital_detail_title">Hospital</string>
+    <string name="hospital_photo_description">Photo of %1$s</string>
+    <string name="hospital_beds_label">Beds available</string>
+    <string name="hospital_icu_label">ICU beds available</string>
+    <string name="hospital_address_label">Address</string>
+    <string name="hospital_contact_label">Contact</string>
+    <plurals name="hospital_beds_short">
+        <item quantity="one">%1$d bed free</item>
+        <item quantity="other">%1$d beds free</item>
+    </plurals>
+    <plurals name="hospital_icu_short">
+        <item quantity="one">%1$d ICU bed free</item>
+        <item quantity="other">%1$d ICU beds free</item>
+    </plurals>
+    <string name="hospital_availability_unknown">Availability not reported</string>
+    <string name="hospital_status_available">Beds available</string>
+    <string name="hospital_status_limited">Limited availability</string>
+    <string name="hospital_status_full">No beds free</string>
+    <plurals name="hospital_list_count">
+        <item quantity="one">%1$d hospital</item>
+        <item quantity="other">%1$d hospitals</item>
+    </plurals>
+
+    <!-- ============================ Blood Link ============================ -->
+    <string name="blood_hub_title">Blood Link</string>
+    <string name="blood_hub_heading">Blood Link</string>
+    <string name="blood_hub_subheading">A shared register of volunteer donors. Join it, or search it when someone needs help.</string>
+    <string name="blood_hub_become_donor">Become a donor</string>
+    <string name="blood_hub_become_donor_detail">Add yourself to the register</string>
+    <string name="blood_hub_find_donor">Find a donor</string>
+    <string name="blood_hub_find_donor_detail">Search by blood group and area</string>
+    <string name="blood_hub_privacy_note">Donors publish their name, blood group, area and contact number so patients can reach them directly.</string>
+
+    <string name="become_donor_title">Become a donor</string>
+    <string name="become_donor_heading">Join the donor register</string>
+    <string name="become_donor_subheading">Your details are visible to anyone searching for a donor.</string>
+    <string name="become_donor_submit">Add me to the register</string>
+    <string name="become_donor_success">You\'re on the donor register. Thank you.</string>
+    <string name="become_donor_duplicate">You\'re already on the register with this number.</string>
+
+    <string name="find_donor_title">Find a donor</string>
+    <string name="find_donor_search_hint">Filter by city or area</string>
+    <string name="find_donor_group_all">All groups</string>
+    <string name="find_donor_group_filter_description">Filter by blood group</string>
+    <string name="donor_blood_group_description">Blood group %1$s</string>
+    <string name="donor_call_description">Call %1$s</string>
+    <plurals name="find_donor_count">
+        <item quantity="one">%1$d donor</item>
+        <item quantity="other">%1$d donors</item>
+    </plurals>
+
+    <!-- ========================== Empty & error =========================== -->
+    <string name="empty_doctors_title">No doctors listed yet</string>
+    <string name="empty_doctors_body">No one has published a practice in this specialty. Try another specialty.</string>
+    <string name="empty_doctors_search_title">No matching doctors</string>
+    <string name="empty_search_body">Nothing matched “%1$s”. Try a different spelling or a shorter search.</string>
+    <string name="empty_hospitals_title">No hospitals listed</string>
+    <string name="empty_hospitals_body">Hospital availability hasn\'t been published yet. Check back shortly.</string>
+    <string name="empty_hospitals_search_title">No matching hospitals</string>
+    <string name="empty_donors_title">No donors registered yet</string>
+    <string name="empty_donors_body">Be the first — add yourself to the register from the Blood Link screen.</string>
+    <string name="empty_donors_filtered_title">No donors match</string>
+    <string name="empty_donors_filtered_body">No registered donor matches that blood group and area. Try widening the search.</string>
+
+    <string name="error_generic_title">Something went wrong</string>
+    <string name="error_network_title">You appear to be offline</string>
+    <string name="error_network_body">Check your connection and try again.</string>
+    <string name="error_permission_title">You don\'t have access</string>
+    <string name="error_permission_body">This data isn\'t available to your account.</string>
+    <string name="error_load_failed">Couldn\'t load this right now. Pull to retry.</string>
+    <string name="error_no_dialer">No phone app is available on this device</string>
+    <string name="error_database_unavailable">VitaCare can\'t reach its database. The app is misconfigured — see firebase_database_url in the project resources.</string>
+
+    <!-- ========================== Accessibility =========================== -->
+    <string name="cd_loading">Loading content</string>
+    <string name="cd_empty_illustration">No results illustration</string>
+
 </resources>

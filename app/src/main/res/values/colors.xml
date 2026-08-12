@@ -1,5 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    VitaCare colour tokens — light scheme.
+
+    These are Material 3 role tokens. Nothing outside themes.xml should
+    reference them directly: layouts and styles use the semantic theme
+    attributes (?attr/colorPrimary, ?attr/colorSurfaceContainer, …) so that the
+    dark scheme in values-night/ applies automatically.
+
+    Source hue is a clinical teal, chosen for legibility over the long reading
+    sessions this app involves, with a desaturated blue tertiary for
+    informational surfaces and a reserved red used only for blood-donation and
+    destructive actions.
+-->
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <!-- ===================== Primary — clinical teal ===================== -->
+    <color name="md_primary">#00696B</color>
+    <color name="md_on_primary">#FFFFFF</color>
+    <color name="md_primary_container">#6FF6F8</color>
+    <color name="md_on_primary_container">#002021</color>
+
+    <!-- ==================== Secondary — muted slate ===================== -->
+    <color name="md_secondary">#4A6364</color>
+    <color name="md_on_secondary">#FFFFFF</color>
+    <color name="md_secondary_container">#CCE8E9</color>
+    <color name="md_on_secondary_container">#051F20</color>
+
+    <!-- ==================== Tertiary — calm indigo ====================== -->
+    <color name="md_tertiary">#4B607C</color>
+    <color name="md_on_tertiary">#FFFFFF</color>
+    <color name="md_tertiary_container">#D3E4FF</color>
+    <color name="md_on_tertiary_container">#041C35</color>
+
+    <!-- ========================= Error / danger ========================= -->
+    <color name="md_error">#BA1A1A</color>
+    <color name="md_on_error">#FFFFFF</color>
+    <color name="md_error_container">#FFDAD6</color>
+    <color name="md_on_error_container">#410002</color>
+
+    <!-- ============================ Neutrals ============================ -->
+    <color name="md_background">#F5FAFA</color>
+    <color name="md_on_background">#171D1D</color>
+    <color name="md_surface">#F5FAFA</color>
+    <color name="md_on_surface">#171D1D</color>
+    <color name="md_surface_variant">#DAE4E4</color>
+    <color name="md_on_surface_variant">#3F4949</color>
+    <color name="md_outline">#6F7979</color>
+    <color name="md_outline_variant">#BEC9C8</color>
+    <color name="md_inverse_surface">#2B3232</color>
+    <color name="md_inverse_on_surface">#ECF2F1</color>
+    <color name="md_inverse_primary">#4CDADD</color>
+    <color name="md_scrim">#000000</color>
+
+    <!-- Surface container tonal ramp — drives card / sheet elevation. -->
+    <color name="md_surface_dim">#D5DBDB</color>
+    <color name="md_surface_bright">#F5FAFA</color>
+    <color name="md_surface_container_lowest">#FFFFFF</color>
+    <color name="md_surface_container_low">#EFF5F4</color>
+    <color name="md_surface_container">#E9EFEF</color>
+    <color name="md_surface_container_high">#E3E9E9</color>
+    <color name="md_surface_container_highest">#DEE4E3</color>
+
+    <!-- ======================= Brand / semantic ========================= -->
+    <!-- Reserved for the Blood Link feature and nothing else. -->
+    <color name="brand_blood">#B3261E</color>
+    <color name="brand_blood_container">#FFDAD6</color>
+    <color name="brand_on_blood_container">#410002</color>
+
+    <!-- Availability indicators on hospital cards. -->
+    <color name="status_available">#1B6B3A</color>
+    <color name="status_available_container">#B7F2C8</color>
+    <color name="status_limited">#7A5900</color>
+    <color name="status_limited_container">#FFDF9B</color>
+    <color name="status_full">#8C1D18</color>
+    <color name="status_full_container">#FFDAD6</color>
+
+    <!-- Specialty accents, used as icon tints on tonal containers. -->
+    <color name="specialty_cardiology">#B3261E</color>
+    <color name="specialty_cardiology_container">#FFDAD6</color>
+    <color name="specialty_orthopedics">#7A5900</color>
+    <color name="specialty_orthopedics_container">#FFDF9B</color>
+    <color name="specialty_neurology">#4B607C</color>
+    <color name="specialty_neurology_container">#D3E4FF</color>
+    <color name="specialty_nephrology">#1B6B3A</color>
+    <color name="specialty_nephrology_container">#B7F2C8</color>
+
 </resources>

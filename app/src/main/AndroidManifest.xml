@@ -1,50 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.vitacare_app_250">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+        Firebase Auth and the Realtime Database both require network access.
+        The Firebase manifests merge this in anyway; declaring it explicitly
+        keeps the app's requirements self-documenting.
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Hospital and doctor detail screens offer a "call" action. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+            <data android:scheme="tel" />
+        </intent>
+    </queries>
 
     <application
+        android:name=".core.VitaCareApp"
         android:allowBackup="true"
-        android:icon="@drawable/logo"
-        android:label="VitaCare"
-        android:roundIcon="@drawable/logo"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.VitaCare_app_250"
+        android:theme="@style/Theme.VitaCare"
         tools:targetApi="31">
+
+        <!-- ============================ Auth ============================ -->
         <activity
-            android:name=".DoctorDashboard"
-            android:exported="false" />
-        <activity
-            android:name=".DoctorLogin"
-            android:exported="false" />
-        <activity
-            android:name=".DoctorSignUp"
-            android:exported="false" />
-        <activity
-            android:name=".DoctorVerification"
-            android:exported="false" />
-        <activity
-            android:name=".JoinActivity"
-            android:exported="true">
+            android:name=".ui.auth.LandingActivity"
+            android:exported="true"
+            android:theme="@style/Theme.VitaCare.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DoctorCategoryActivity" />
-        <activity android:name=".DoctorListActivity" />
-        <activity android:name=".DashboardActivity" />
-        <activity android:name=".DoctorInfoActivity" />
-        <activity android:name=".SearchHospitalActivity" />
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".BloodDonorActivity" />
-        <activity android:name=".BecomeADonorActivity" />
-        <activity android:name=".FindADonorActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".HospitalDetailActivity" />
-        <activity android:name=".DoctorProfileActivity" />
-        <activity android:name=".UserProfileActivity" />
+
+        <activity
+            android:name=".ui.auth.PatientLoginActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.auth.LandingActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.auth.PatientSignUpActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.auth.PatientLoginActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.auth.DoctorVerificationActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.auth.LandingActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.auth.DoctorLoginActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.auth.LandingActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.auth.DoctorSignUpActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.auth.DoctorLoginActivity"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- =========================== Patient ========================== -->
+        <activity
+            android:name=".ui.patient.PatientHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.patient.PatientProfileActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.patient.PatientHomeActivity" />
+
+        <!-- =========================== Doctor =========================== -->
+        <activity
+            android:name=".ui.doctor.DoctorHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.doctor.DoctorPracticeFormActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.doctor.DoctorHomeActivity"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- ========================= Directory ========================== -->
+        <activity
+            android:name=".ui.directory.SpecialtyActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.patient.PatientHomeActivity" />
+        <activity
+            android:name=".ui.directory.DoctorListActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.directory.DoctorDetailActivity"
+            android:exported="false" />
+
+        <!-- ========================== Hospitals ========================= -->
+        <activity
+            android:name=".ui.hospital.HospitalListActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.patient.PatientHomeActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.hospital.HospitalDetailActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.hospital.HospitalListActivity" />
+
+        <!-- ========================= Blood Link ========================= -->
+        <activity
+            android:name=".ui.blood.BloodHubActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.patient.PatientHomeActivity" />
+        <activity
+            android:name=".ui.blood.BecomeDonorActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.blood.BloodHubActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.blood.FindDonorActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.blood.BloodHubActivity"
+            android:windowSoftInputMode="adjustResize" />
+
     </application>
 
 </manifest>

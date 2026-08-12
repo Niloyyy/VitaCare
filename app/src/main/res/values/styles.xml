@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Component styles.
+
+    Screens compose from these rather than setting size, colour or padding
+    inline. If a layout needs a one-off visual tweak, the right move is to add
+    a variant here, not to hardcode the value at the call site.
+-->
+<resources>
+
+    <!-- ============================== Buttons ============================= -->
+
+    <style name="Widget.VitaCare.Button" parent="Widget.Material3.Button">
+        <item name="android:minHeight">@dimen/touch_target_min</item>
+        <item name="android:paddingStart">@dimen/space_lg</item>
+        <item name="android:paddingEnd">@dimen/space_lg</item>
+        <item name="android:textAppearance">@style/TextAppearance.VitaCare.LabelLarge</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">@dimen/corner_button</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">@dimen/space_sm</item>
+    </style>
+
+    <!-- Full-bleed primary action at the bottom of a form. -->
+    <style name="Widget.VitaCare.Button.Primary">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:minHeight">@dimen/button_height_tall</item>
+    </style>
+
+    <style name="Widget.VitaCare.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:minHeight">@dimen/touch_target_min</item>
+        <item name="android:paddingStart">@dimen/space_lg</item>
+        <item name="android:paddingEnd">@dimen/space_lg</item>
+        <item name="android:textAppearance">@style/TextAppearance.VitaCare.LabelLarge</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">@dimen/corner_button</item>
+        <item name="strokeColor">?attr/colorOutline</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">@dimen/space_sm</item>
+    </style>
+
+    <style name="Widget.VitaCare.Button.Outlined.Tall">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:minHeight">@dimen/button_height_tall</item>
+    </style>
+
+    <style name="Widget.VitaCare.Button.Tonal" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:minHeight">@dimen/touch_target_min</item>
+        <item name="android:textAppearance">@style/TextAppearance.VitaCare.LabelLarge</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">@dimen/corner_button</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">@dimen/space_sm</item>
+    </style>
+
+    <style name="Widget.VitaCare.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:minHeight">@dimen/touch_target_min</item>
+        <item name="android:textAppearance">@style/TextAppearance.VitaCare.LabelLarge</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+
+    <style name="Widget.VitaCare.Button.IconOnly" parent="Widget.Material3.Button.IconButton">
+        <item name="android:minWidth">@dimen/touch_target_min</item>
+        <item name="android:minHeight">@dimen/touch_target_min</item>
+    </style>
+
+    <!-- ============================ Text fields =========================== -->
+
+    <style name="Widget.VitaCare.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">@dimen/corner_field</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/corner_field</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/corner_field</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/corner_field</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="errorIconDrawable">@drawable/ic_error_16</item>
+        <!--
+            Reserve the helper/error line permanently. Without this the whole
+            form jumps by one line the first time a field reports an error.
+        -->
+        <item name="errorEnabled">true</item>
+    </style>
+
+    <!-- Read-only field that opens a picker (blood group, specialty). -->
+    <style name="Widget.VitaCare.TextInputLayout.Dropdown" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxCornerRadiusTopStart">@dimen/corner_field</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/corner_field</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/corner_field</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/corner_field</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="errorEnabled">true</item>
+    </style>
+
+    <!-- Search bar in list screens: filled, pill-shaped, no floating label. -->
+    <style name="Widget.VitaCare.TextInputLayout.Search" parent="Widget.Material3.TextInputLayout.FilledBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="boxBackgroundColor">?attr/colorSurfaceContainerHigh</item>
+        <item name="boxCornerRadiusTopStart">@dimen/corner_pill</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/corner_pill</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/corner_pill</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/corner_pill</item>
+        <item name="hintEnabled">false</item>
+        <item name="startIconDrawable">@drawable/ic_search_24</item>
+        <item name="startIconTint">?attr/colorOnSurfaceVariant</item>
+        <item name="endIconMode">clear_text</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+    </style>
+
+    <style name="Widget.VitaCare.TextInputEditText" parent="Widget.Material3.TextInputEditText.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/touch_target_min</item>
+        <item name="android:textAppearance">?attr/textAppearanceBodyLarge</item>
+    </style>
+
+    <style name="Widget.VitaCare.TextInputEditText.Search" parent="Widget.Material3.TextInputEditText.FilledBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/touch_target_min</item>
+        <item name="android:paddingTop">@dimen/space_md</item>
+        <item name="android:paddingBottom">@dimen/space_md</item>
+        <item name="android:textAppearance">?attr/textAppearanceBodyLarge</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:imeOptions">actionSearch|flagNoExtractUi</item>
+        <item name="android:inputType">text</item>
+    </style>
+
+    <!-- ============================== Cards =============================== -->
+
+    <style name="Widget.VitaCare.Card" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">?attr/colorSurfaceContainerLow</item>
+        <item name="cardCornerRadius">@dimen/corner_card</item>
+        <item name="cardElevation">0dp</item>
+        <item name="contentPadding">@dimen/space_lg</item>
+    </style>
+
+    <!-- Tappable list row. Adds ripple, focus ring and a hairline border. -->
+    <style name="Widget.VitaCare.Card.Interactive">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="rippleColor">?attr/colorPrimary</item>
+        <item name="strokeColor">?attr/colorOutlineVariant</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="contentPadding">0dp</item>
+    </style>
+
+    <!-- Raised card used for the single focal panel on a screen. -->
+    <style name="Widget.VitaCare.Card.Elevated" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">?attr/colorSurfaceContainerLowest</item>
+        <item name="cardCornerRadius">@dimen/corner_card_large</item>
+        <item name="cardElevation">@dimen/elevation_card</item>
+        <item name="contentPadding">@dimen/space_xl</item>
+    </style>
+
+    <!-- Read-only key/value block on detail screens. -->
+    <style name="Widget.VitaCare.Card.Info">
+        <item name="cardBackgroundColor">?attr/colorSurfaceContainer</item>
+        <item name="contentPadding">@dimen/space_lg</item>
+    </style>
+
+    <!-- ============================== App bar ============================= -->
+
+    <style name="Widget.VitaCare.Toolbar" parent="Widget.Material3.Toolbar.OnSurface">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="titleTextAppearance">@style/TextAppearance.VitaCare.TitleLarge</item>
+        <item name="titleCentered">false</item>
+        <item name="navigationIcon">@drawable/ic_arrow_back_24</item>
+        <item name="navigationContentDescription">@string/action_navigate_up</item>
+    </style>
+
+    <style name="Widget.VitaCare.AppBarLayout" parent="Widget.Material3.AppBarLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="liftOnScroll">true</item>
+        <item name="android:background">?attr/colorSurface</item>
+    </style>
+
+    <!-- ========================== Chips & badges ========================== -->
+
+    <style name="Widget.VitaCare.Chip" parent="Widget.Material3.Chip.Assist">
+        <item name="android:textAppearance">?attr/textAppearanceLabelMedium</item>
+        <item name="chipMinHeight">32dp</item>
+    </style>
+
+    <!-- Non-interactive label, e.g. a doctor's specialty on a list row. -->
+    <style name="Widget.VitaCare.Chip.Tag" parent="Widget.Material3.Chip.Suggestion">
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:checkable">false</item>
+        <item name="chipMinHeight">28dp</item>
+        <item name="chipStrokeWidth">0dp</item>
+        <item name="chipBackgroundColor">?attr/colorSecondaryContainer</item>
+        <item name="android:textColor">?attr/colorOnSecondaryContainer</item>
+        <item name="ensureMinTouchTargetSize">false</item>
+    </style>
+
+
+    <!-- =========================== Text styles ============================ -->
+
+    <style name="TextAppearance.VitaCare.SectionHeader" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Widget.VitaCare.SectionHeader" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance.VitaCare.SectionHeader</item>
+        <item name="android:paddingTop">@dimen/space_lg</item>
+        <item name="android:paddingBottom">@dimen/space_sm</item>
+    </style>
+
+    <!-- Small caption under a value on detail screens. -->
+    <style name="Widget.VitaCare.FieldLabel" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?attr/textAppearanceLabelMedium</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+    </style>
+
+    <style name="Widget.VitaCare.FieldValue" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?attr/textAppearanceBodyLarge</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:textIsSelectable">true</item>
+    </style>
+
+    <!-- ============================= Feedback ============================= -->
+
+    <style name="Widget.VitaCare.Snackbar" parent="Widget.Material3.Snackbar">
+        <item name="shapeAppearance">@style/ShapeAppearance.VitaCare.Small</item>
+    </style>
+
+    <style name="Widget.VitaCare.Snackbar.Button" parent="Widget.Material3.Button.TextButton.Snackbar">
+        <item name="android:textAppearance">@style/TextAppearance.VitaCare.LabelLarge</item>
+    </style>
+
+    <style name="Widget.VitaCare.Snackbar.TextView" parent="Widget.Material3.Snackbar.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceBodyMedium</item>
+        <item name="android:maxLines">4</item>
+    </style>
+
+    <style name="Widget.VitaCare.ProgressBar" parent="Widget.Material3.CircularProgressIndicator">
+        <item name="indicatorColor">?attr/colorPrimary</item>
+        <item name="trackThickness">3dp</item>
+    </style>
+
+
+    <style name="Widget.VitaCare.BottomSheet" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="shapeAppearance">@style/ShapeAppearance.VitaCare.ExtraLarge</item>
+    </style>
+
+    <!-- ============================== Layout ============================== -->
+
+    <!-- Standard scrolling content column: gutters plus bottom breathing room. -->
+    <style name="Widget.VitaCare.ContentColumn" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingStart">@dimen/screen_gutter</item>
+        <item name="android:paddingEnd">@dimen/screen_gutter</item>
+        <item name="android:paddingBottom">@dimen/space_xxl</item>
+    </style>
+
+</resources>

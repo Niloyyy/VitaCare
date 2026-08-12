@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    VitaCare colour tokens — dark scheme.
+
+    Same token names as values/colors.xml, retuned for dark surfaces: hues are
+    lightened and desaturated so they clear the 4.5:1 contrast bar against the
+    dark neutrals, and containers become dim tonal fills rather than pastels.
+-->
+<resources>
+
+    <!-- ===================== Primary — clinical teal ===================== -->
+    <color name="md_primary">#4CDADD</color>
+    <color name="md_on_primary">#003738</color>
+    <color name="md_primary_container">#004F51</color>
+    <color name="md_on_primary_container">#6FF6F8</color>
+
+    <!-- ==================== Secondary — muted slate ===================== -->
+    <color name="md_secondary">#B0CCCC</color>
+    <color name="md_on_secondary">#1B3435</color>
+    <color name="md_secondary_container">#324B4C</color>
+    <color name="md_on_secondary_container">#CCE8E9</color>
+
+    <!-- ==================== Tertiary — calm indigo ====================== -->
+    <color name="md_tertiary">#B3C8E8</color>
+    <color name="md_on_tertiary">#1C314B</color>
+    <color name="md_tertiary_container">#334863</color>
+    <color name="md_on_tertiary_container">#D3E4FF</color>
+
+    <!-- ========================= Error / danger ========================= -->
+    <color name="md_error">#FFB4AB</color>
+    <color name="md_on_error">#690005</color>
+    <color name="md_error_container">#93000A</color>
+    <color name="md_on_error_container">#FFDAD6</color>
+
+    <!-- ============================ Neutrals ============================ -->
+    <color name="md_background">#0E1514</color>
+    <color name="md_on_background">#DEE4E3</color>
+    <color name="md_surface">#0E1514</color>
+    <color name="md_on_surface">#DEE4E3</color>
+    <color name="md_surface_variant">#3F4949</color>
+    <color name="md_on_surface_variant">#BEC9C8</color>
+    <color name="md_outline">#899393</color>
+    <color name="md_outline_variant">#3F4949</color>
+    <color name="md_inverse_surface">#DEE4E3</color>
+    <color name="md_inverse_on_surface">#2B3232</color>
+    <color name="md_inverse_primary">#00696B</color>
+    <color name="md_scrim">#000000</color>
+
+    <color name="md_surface_dim">#0E1514</color>
+    <color name="md_surface_bright">#343A3A</color>
+    <color name="md_surface_container_lowest">#090F0F</color>
+    <color name="md_surface_container_low">#171D1D</color>
+    <color name="md_surface_container">#1B2121</color>
+    <color name="md_surface_container_high">#252B2B</color>
+    <color name="md_surface_container_highest">#303636</color>
+
+    <!-- ======================= Brand / semantic ========================= -->
+    <color name="brand_blood">#FFB4AB</color>
+    <color name="brand_blood_container">#93000A</color>
+    <color name="brand_on_blood_container">#FFDAD6</color>
+
+    <color name="status_available">#9BD5AE</color>
+    <color name="status_available_container">#00522A</color>
+    <color name="status_limited">#EFC148</color>
+    <color name="status_limited_container">#5C4300</color>
+    <color name="status_full">#FFB4AB</color>
+    <color name="status_full_container">#93000A</color>
+
+    <color name="specialty_cardiology">#FFB4AB</color>
+    <color name="specialty_cardiology_container">#5C1512</color>
+    <color name="specialty_orthopedics">#EFC148</color>
+    <color name="specialty_orthopedics_container">#5C4300</color>
+    <color name="specialty_neurology">#B3C8E8</color>
+    <color name="specialty_neurology_container">#334863</color>
+    <color name="specialty_nephrology">#9BD5AE</color>
+    <color name="specialty_nephrology_container">#00522A</color>
+
+</resources>

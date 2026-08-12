@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--
+        Realtime Database URL.
+
+        google-services.json for this project does NOT contain a "firebase_url"
+        entry, which means FirebaseDatabase.getInstance() cannot infer the
+        endpoint and throws at runtime. Supplying it explicitly here keeps every
+        data screen working and makes the dependency visible.
+
+        The value below is the default us-central1 endpoint derived from the
+        project id (vitacare-e1c08). If the database was created in another
+        region the console will show a different host — for example
+        https://vitacare-e1c08-default-rtdb.asia-southeast1.firebasedatabase.app
+        — in which case replace the value here.
+
+        The durable fix is to re-download google-services.json from the Firebase
+        console after the Realtime Database has been created; the regenerated
+        file carries firebase_url and this override becomes redundant (it is
+        still honoured, and still correct, either way).
+    -->
+    <string name="firebase_database_url" translatable="false">https://vitacare-e1c08-default-rtdb.firebaseio.com</string>
+
+    <!--
+        Local disk cache for the Realtime Database. Keeps the doctor, hospital
+        and donor lists readable while offline, which matters for an app people
+        reach for in an emergency.
+    -->
+    <bool name="firebase_persistence_enabled">true</bool>
+
+</resources>

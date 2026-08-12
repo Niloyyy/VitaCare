@@ -1,3 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Spacing and sizing scale. A 4dp base grid; layouts use these names rather
+    than literals so the rhythm stays consistent and is adjustable in one place.
+    values-sw600dp/dimens.xml widens the gutters on tablets.
+-->
 <resources>
-    <dimen name="recycler_item_spacing">16dp</dimen>
+
+    <!-- ============================= Spacing ============================== -->
+    <dimen name="space_xxs">2dp</dimen>
+    <dimen name="space_xs">4dp</dimen>
+    <dimen name="space_sm">8dp</dimen>
+    <dimen name="space_md">12dp</dimen>
+    <dimen name="space_lg">16dp</dimen>
+    <dimen name="space_xl">24dp</dimen>
+    <dimen name="space_xxl">32dp</dimen>
+
+    <!-- Horizontal page margin. -->
+    <dimen name="screen_gutter">20dp</dimen>
+
+    <!-- ============================== Shape =============================== -->
+    <dimen name="corner_field">14dp</dimen>
+    <dimen name="corner_button">14dp</dimen>
+    <dimen name="corner_card">18dp</dimen>
+    <dimen name="corner_card_large">24dp</dimen>
+    <dimen name="corner_pill">28dp</dimen>
+
+    <!-- ============================== Sizing ============================== -->
+    <!-- Android accessibility minimum for any tappable target. -->
+    <dimen name="touch_target_min">48dp</dimen>
+    <dimen name="button_height_tall">56dp</dimen>
+    <dimen name="icon_md">24dp</dimen>
+    <dimen name="icon_tile">48dp</dimen>
+    <dimen name="avatar_sm">44dp</dimen>
+    <dimen name="avatar_lg">96dp</dimen>
+    <dimen name="logo_size">104dp</dimen>
+    <dimen name="empty_state_icon">72dp</dimen>
+    <dimen name="hero_image_height">200dp</dimen>
+    <dimen name="blood_group_badge">52dp</dimen>
+
+    <!-- ============================ Elevation ============================= -->
+    <dimen name="elevation_card">2dp</dimen>
+
+    <!-- ============================== Lists =============================== -->
+    <dimen name="list_item_spacing">12dp</dimen>
+    <dimen name="list_edge_spacing">16dp</dimen>
+    <!-- Clears the last row from the gesture bar / bottom inset. -->
+    <dimen name="list_bottom_padding">88dp</dimen>
+
 </resources>

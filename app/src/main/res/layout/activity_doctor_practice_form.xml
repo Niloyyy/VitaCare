@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Publish / edit a doctor's practice profile.
+
+    The specialty control is an exposed dropdown backed by the Specialty enum
+    rather than a bare Spinner whose first entry was the prompt "Select
+    Specialist" and whose selected label was lower-cased into a database key.
+-->
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        style="@style/Widget.VitaCare.AppBarLayout">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/Widget.VitaCare.Toolbar" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            style="@style/Widget.VitaCare.ContentColumn"
+            android:paddingTop="@dimen/space_lg">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/doctor_form_heading"
+                android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                android:textColor="?attr/colorOnSurface" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:text="@string/doctor_form_subheading"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/name_layout"
+                style="@style/Widget.VitaCare.TextInputLayout"
+                android:layout_marginTop="@dimen/space_xl"
+                android:hint="@string/field_full_name"
+                app:placeholderText="@string/hint_full_name"
+                app:startIconDrawable="@drawable/ic_person_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name"
+                    style="@style/Widget.VitaCare.TextInputEditText"
+                    android:autofillHints="name"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName|textCapWords"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/specialty_layout"
+                style="@style/Widget.VitaCare.TextInputLayout.Dropdown"
+                android:hint="@string/field_specialty">
+
+                <!--
+                    inputType="none" plus a non-editable AutoCompleteTextView:
+                    the value can only come from the list, so an unmapped
+                    specialty key cannot be typed in.
+                -->
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/specialty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/touch_target_min"
+                    android:editable="false"
+                    android:inputType="none"
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
+                    tools:ignore="Deprecated,LabelFor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/focus_layout"
+                style="@style/Widget.VitaCare.TextInputLayout"
+                android:hint="@string/field_focus_area"
+                app:helperText="@string/helper_focus_area"
+                app:placeholderText="@string/hint_focus_area"
+                app:startIconDrawable="@drawable/ic_stethoscope_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/focus"
+                    style="@style/Widget.VitaCare.TextInputEditText"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapSentences"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/contact_layout"
+                style="@style/Widget.VitaCare.TextInputLayout"
+                android:hint="@string/field_phone"
+                app:placeholderText="@string/hint_phone"
+                app:startIconDrawable="@drawable/ic_phone_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/contact"
+                    style="@style/Widget.VitaCare.TextInputEditText"
+                    android:autofillHints="phone"
+                    android:imeOptions="actionNext"
+                    android:inputType="phone"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/degree_layout"
+                style="@style/Widget.VitaCare.TextInputLayout"
+                android:hint="@string/field_degree"
+                app:placeholderText="@string/hint_degree"
+                app:startIconDrawable="@drawable/ic_school_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/degree"
+                    style="@style/Widget.VitaCare.TextInputEditText"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapCharacters"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/chamber_layout"
+                style="@style/Widget.VitaCare.TextInputLayout"
+                android:hint="@string/field_chamber"
+                app:placeholderText="@string/hint_chamber"
+                app:startIconDrawable="@drawable/ic_location_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/chamber"
+                    style="@style/Widget.VitaCare.TextInputEditText"
+                    android:gravity="top|start"
+                    android:imeOptions="actionDone"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:minLines="3" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/submit"
+                style="@style/Widget.VitaCare.Button.Primary"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_lg"
+                android:text="@string/action_save" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:indeterminate="true"
+                android:visibility="invisible"
+                tools:visibility="visible" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

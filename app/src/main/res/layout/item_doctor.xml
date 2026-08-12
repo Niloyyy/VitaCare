@@ -1,56 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+<!--
+    A doctor in the directory.
+
+    The old row printed four lines of "Label: value" at 18-22sp in four
+    different hardcoded colours on a cream card. Here the name leads, the
+    specialty is a tag, and the supporting details are secondary — so the row
+    can be scanned rather than read.
+-->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card"
+    style="@style/Widget.VitaCare.Card.Interactive"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    card_view:cardCornerRadius="16dp"
-    card_view:cardElevation="6dp"
-    android:foreground="?android:attr/selectableItemBackground"
-    card_view:cardBackgroundColor="#F7F7E4"> <!-- Light green background -->
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="horizontal"
+        android:padding="@dimen/space_lg">
 
-        <TextView
-            android:id="@+id/textDoctorName"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="@dimen/avatar_sm"
+            android:layout_height="@dimen/avatar_sm"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_avatar_placeholder" />
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Dr. Name"
-            android:textStyle="bold"
-            android:textSize="22sp"
-            android:textColor="#1D3557" />
+            android:layout_marginStart="@dimen/space_lg"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textDoctorDegree"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Degree: MBBS"
-            android:textColor="#444"
-            android:textSize="18sp"
-            android:layout_marginTop="4dp" />
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textColor="?attr/colorOnSurface"
+                tools:text="Dr. Ayesha Rahman" />
 
-        <TextView
-            android:id="@+id/textDoctorContact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Phone: +8801XXXXXXXXX"
-            android:textColor="#444"
-            android:textSize="18sp"
-            android:layout_marginTop="4dp" />
+            <TextView
+                android:id="@+id/focus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_xxs"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                tools:text="Interventional heart surgery" />
 
-        <TextView
-            android:id="@+id/textDoctorSpeciality"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Speciality: Cardiology"
-            android:textColor="#2E8B57"
-            android:textStyle="italic"
-            android:textSize="18sp"
-            android:layout_marginTop="4dp" />
+            <TextView
+                android:id="@+id/degree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_xxs"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                tools:text="MBBS, FCPS (Cardiology)" />
 
+            <com.google.android.material.chip.Chip
+                android:id="@+id/specialty_chip"
+                style="@style/Widget.VitaCare.Chip.Tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                tools:text="@string/specialty_cardiology" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/call"
+            style="@style/Widget.VitaCare.Button.IconOnly"
+            android:layout_width="@dimen/touch_target_min"
+            android:layout_height="@dimen/touch_target_min"
+            android:layout_gravity="center_vertical"
+            app:icon="@drawable/ic_phone_24"
+            app:iconTint="?attr/colorPrimary" />
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
